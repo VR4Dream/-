@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weijie.vr4dream.ui.widget.MultiRadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MultiRadioGroupSmall"
+    >
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout">
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_all"
+            android:text="@string/text_no_limit"
+            android:checked="true"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_01"
+            android:layout_marginLeft="35dp"
+            android:text="现代"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_02"
+            android:text="中式"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_03"
+            android:layout_marginLeft="35dp"
+            android:text="美式"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_04"
+            android:text="北欧"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_05"
+            android:layout_marginLeft="35dp"
+            android:text="法式"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_06"
+            android:text="韩式"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_07"
+            android:layout_marginLeft="35dp"
+            android:text="欧式"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_08"
+            android:text="东南亚"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/style_09"
+            android:layout_marginLeft="35dp"
+            android:text="乡村"
+            />
+    </LinearLayout>
+
+</com.weijie.vr4dream.ui.widget.MultiRadioGroup>

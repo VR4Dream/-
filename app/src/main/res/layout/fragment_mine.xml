@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgGray"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivHeadIcon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/user_pic" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_user_name"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/txt_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MineLayoutStyle"
+            android:layout_height="@dimen/normal_view_height"
+            >
+
+            <TextView
+                style="@style/MineBlockViewClick"
+                android:drawableEnd="@mipmap/ic_right_arrow"
+                android:text="@string/text_user_info"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MineLayoutStyle"
+            android:layout_height="@dimen/normal_view_height_double"
+            >
+
+            <TextView
+                style="@style/MineBlockView"
+                android:text="@string/text_scene"/>
+            <include layout="@layout/divider_line_horizontal" />
+            <TextView
+                style="@style/MineBlockViewClick"
+                android:drawableEnd="@mipmap/ic_right_arrow"
+                android:drawableStart="@mipmap/ic_favourite"
+                android:text="@string/text_favourite"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MineLayoutStyle"
+            android:layout_height="@dimen/normal_view_height_double"
+            >
+
+            <TextView
+                style="@style/MineBlockView"
+                android:text="@string/text_idea"/>
+            <include layout="@layout/divider_line_horizontal" />
+            <TextView
+                style="@style/MineBlockViewClick"
+                android:drawableEnd="@mipmap/ic_right_arrow"
+                android:drawableStart="@mipmap/ic_favourite"
+                android:text="@string/text_favourite"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MineLayoutStyle"
+            android:layout_height="@dimen/normal_view_height_double"
+            >
+
+            <TextView
+                android:id="@+id/tv_setting"
+                style="@style/MineBlockViewClick"
+                android:drawableEnd="@mipmap/ic_right_arrow"
+                android:text="@string/text_setting"/>
+            <include layout="@layout/divider_line_horizontal" />
+            <TextView
+                style="@style/MineBlockViewClick"
+                android:drawableEnd="@mipmap/ic_right_arrow"
+                android:text="@string/text_suggest"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MineLayoutStyle"
+            android:layout_height="@dimen/normal_view_height"
+            >
+
+            <TextView
+                style="@style/MineBlockViewClick"
+                android:text="@string/text_share"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

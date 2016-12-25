@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="20dp"
+        android:text="@string/tips_net_err"
+        android:textColor="@color/tipsColor"
+        android:textSize="@dimen/txt_tips" />
+    <TextView
+        android:id="@+id/tvRetry"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_round_rectangle_orange"
+        android:gravity="center"
+        android:text="@string/text_retry"
+        android:textColor="@color/tipsColor"
+        android:textSize="@dimen/txt_content" />
+
+
+
+</LinearLayout>

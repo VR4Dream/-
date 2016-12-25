@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_luch"
+        />
+
+    <LinearLayout
+        android:id="@+id/lv_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:visibility="visible">
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            vr:input_left="@mipmap/login_people"
+            vr:input_hint="@string/text_input_username">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr:input_left="@mipmap/login_password"
+            vr:input_hint="@string/text_input_password"
+            vr:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/selector_round_button_green"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_button"
+            android:text="@string/text_login"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:textSize="@dimen/txt_tips"
+                android:textColor="@color/txtColor"
+                android:text="@string/text_register"
+                />
+
+            <TextView
+                android:id="@+id/tv_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:textSize="@dimen/txt_tips"
+                android:textColor="@color/txtColor"
+                android:text="@string/text_forget"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="0.7dp"
+                android:background="@color/dividerColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_tips"
+                android:textColor="@color/tipsColor"
+                android:text="@string/text_third_login"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="0.7dp"
+                android:background="@color/dividerColor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/login_qq"
+                android:textSize="@dimen/txt_tips"
+                android:textColor="@color/tipsColor"
+                android:text="@string/text_qq"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/login_weixin"
+                android:textSize="@dimen/txt_tips"
+                android:textColor="@color/tipsColor"
+                android:text="@string/text_weixin"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/login_tao"
+                android:textSize="@dimen/txt_tips"
+                android:textColor="@color/tipsColor"
+                android:text="@string/text_taobao"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lv_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:visibility="gone">
+        <com.weijie.vr4dream.ui.widget.IdentifyView
+            android:id="@+id/rs_identify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </com.weijie.vr4dream.ui.widget.IdentifyView>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/re_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr:input_left="@mipmap/login_password"
+            vr:input_hint="@string/text_input_password"
+            vr:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/re_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr:input_left="@mipmap/login_password"
+            vr:input_hint="@string/text_input_password_again"
+            vr:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <Button
+            android:id="@+id/bt_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/selector_round_button_green"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_button"
+            android:text="@string/text_register_bt"/>
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:clickable="true"
+            android:textSize="@dimen/txt_tips"
+            android:textColor="@color/txtColor"
+            android:text="@string/text_login_msg"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lv_forget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:visibility="gone">
+        <com.weijie.vr4dream.ui.widget.IdentifyView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </com.weijie.vr4dream.ui.widget.IdentifyView>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/fg_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr:input_left="@mipmap/login_password"
+            vr:input_hint="@string/text_input_password"
+            vr:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/fg_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr:input_left="@mipmap/login_password"
+            vr:input_hint="@string/text_input_password_again"
+            vr:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/selector_round_button_green"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_button"
+            android:text="@string/text_sure"/>
+
+        <TextView
+            android:id="@+id/tv_forget_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/block_padding"
+            android:clickable="true"
+            android:textSize="@dimen/txt_tips"
+            android:textColor="@color/txtColor"
+            android:text="@string/text_forget_login"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

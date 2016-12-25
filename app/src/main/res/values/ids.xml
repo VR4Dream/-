@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="toolbar" type="id" />
+    <item name="statusView" type="id" />
+    <item name="refreshLayout" type="id" />
+    <item name="recycleView" type="id" />
+</resources>

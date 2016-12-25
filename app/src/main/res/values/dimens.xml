@@ -1,0 +1,36 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="block_padding">10dp</dimen>
+
+    <!-- 标题文字大小 -->
+    <dimen name="txt_title">18sp</dimen>
+    <!-- 按钮文字大小 -->
+    <dimen name="txt_button">16sp</dimen>
+    <!-- 内容文字大小 -->
+    <dimen name="txt_content">14sp</dimen>
+    <!-- 提示文字大小 -->
+    <dimen name="txt_tips">13sp</dimen>
+    <dimen name="txt_tips_small">12sp</dimen>
+
+    <dimen name="txt_mini">10sp</dimen>
+
+    <!-- 标题栏高度 -->
+    <dimen name="titlebar_height">48dp</dimen>
+
+    <!-- 标题栏高度 -->
+    <dimen name="slidingmenu_width">265dp</dimen>
+    <dimen name="menu_diver">1dp</dimen>
+
+    <!-- 按钮高度 -->
+    <dimen name="normal_view_height">42dp</dimen>
+    <dimen name="normal_view_height_double">84.7dp</dimen>
+
+    <!-- 阴影高度 -->
+    <dimen name="shadow_height">1.5dp</dimen>
+
+    <!-- 顶部导航高度 -->
+    <dimen name="guide_view_height">1.5dp</dimen>
+
+</resources>

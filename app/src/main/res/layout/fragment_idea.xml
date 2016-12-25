@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:textColor="@color/txtColor"
+        android:textSize="@dimen/txt_title"
+        android:text="@string/text_idea"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/shadow_bottom"
+        />
+    
+    <com.weijie.vr4dream.ui.widget.GuideTabView
+        android:id="@+id/guide_tab"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@android:color/white">
+    </com.weijie.vr4dream.ui.widget.GuideTabView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/shadow_bottom"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

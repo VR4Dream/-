@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#1aa180</color>
+    <color name="colorAccent">#34b895</color>
+    <color name="bgGray">#FFEDEFF0</color>
+
+    <color name="txtColor">#616161</color>
+    <color name="tipsColor">#A7A7A7</color>
+    <color name="bgGreenPressed">#34b895</color>
+    <color name="bgGreen">#1aa180</color>
+    <color name="dividerColor">#E9E9E9</color>
+    <color name="btnEnable">#34b895</color>
+    <color name="btnEnablePress">#1aa180</color>
+    <color name="btnUnable">#A7A7A7</color>
+    <color name="radiobutton_nor">#c9c9c9</color>
+    <color name="radiobutton_checked">#34b895</color>
+
+    <color name="guideIndicate">#34b895</color>
+</resources>

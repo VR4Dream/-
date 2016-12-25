@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/slidingmenu_width"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_build_rel"
+        style="@style/SlidingMenu01"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:drawableStart="@mipmap/ic_building"
+        android:text="@string/text_build_real"
+        />
+
+    <TextView
+        android:id="@+id/tv_vr_list"
+        style="@style/SlidingMenu01"
+        android:layout_marginTop="@dimen/menu_diver"
+        android:drawableStart="@mipmap/ic_vr"
+        android:text="@string/text_vr_list"
+        />
+
+    <TextView
+        style="@style/SlidingMenu01"
+        android:layout_marginTop="25dp"
+        android:drawableStart="@mipmap/ic_choice"
+        android:textColor="@color/tipsColor"
+        android:text="@string/text_gallery_choice"
+        />
+
+    <com.weijie.vr4dream.ui.widget.MultiRadioGroup
+        android:id="@+id/rg_house"
+        style="@style/MultiRadioGroup"
+        android:layout_marginTop="@dimen/menu_diver"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                style="@style/MultiRadioButton"
+                android:id="@+id/rb_all_house"
+                android:layout_height="35dp"
+                android:text="@string/text_all_house"
+                android:checked="true"
+                />
+
+            <RadioButton
+                style="@style/MultiRadioButton"
+                android:id="@+id/rb_part_house"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:text="@string/text_part_house"
+                />
+        </LinearLayout>
+    </com.weijie.vr4dream.ui.widget.MultiRadioGroup>
+
+    <com.weijie.vr4dream.ui.widget.ScrollViewExt
+        android:layout_width="@dimen/slidingmenu_width"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_build_type"
+                style="@style/SlidingMenu02"
+                android:drawableStart="@mipmap/ic_building_type"
+                android:text="@string/text_build_type"
+                />
+
+            <include android:id="@+id/rg_build" layout="@layout/include_radiogroup_build"></include>
+
+            <TextView
+                android:id="@+id/tv_area"
+                style="@style/SlidingMenu02"
+                android:drawableStart="@mipmap/ic_area"
+                android:text="@string/text_area"
+                />
+
+            <include android:id="@+id/rg_area" layout="@layout/include_radiogroup_area"></include>
+
+            <TextView
+                android:id="@+id/tv_budget"
+                style="@style/SlidingMenu02"
+                android:drawableStart="@mipmap/ic_budget"
+                android:text="@string/text_budget"
+                />
+
+            <include android:id="@+id/rg_budget" layout="@layout/include_radiogroup_budget"></include>
+
+            <TextView
+                android:id="@+id/tv_style"
+                style="@style/SlidingMenu02"
+                android:drawableStart="@mipmap/ic_style"
+                android:text="@string/text_style"
+                />
+
+            <include android:id="@+id/rg_style" layout="@layout/include_radiogroup_style"></include>
+
+            <TextView
+                android:id="@+id/tv_hotness"
+                style="@style/SlidingMenu02"
+                android:drawableStart="@mipmap/ic_hotness"
+                android:text="@string/text_hotness"
+                />
+
+            <include android:id="@+id/rg_hotness" layout="@layout/include_radiogroup_hotness"></include>
+
+        </LinearLayout>
+    </com.weijie.vr4dream.ui.widget.ScrollViewExt>
+
+</LinearLayout>

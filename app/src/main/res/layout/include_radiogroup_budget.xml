@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weijie.vr4dream.ui.widget.MultiRadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MultiRadioGroupSmall"
+    >
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout">
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/budget_all"
+            android:text="@string/text_no_limit"
+            android:checked="true"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/budget_01"
+            android:layout_marginLeft="35dp"
+            android:text="1万以下"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/budget_02"
+            android:text="1万-2万"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/budget_03"
+            android:layout_marginLeft="35dp"
+            android:text="2万-3万"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/budget_04"
+            android:text="3万-4万"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/budget_05"
+            android:layout_marginLeft="35dp"
+            android:text="4万以上"
+            />
+    </LinearLayout>
+
+</com.weijie.vr4dream.ui.widget.MultiRadioGroup>

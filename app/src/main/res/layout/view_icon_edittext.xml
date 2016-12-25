@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    >
+
+    <ImageView
+        android:id="@+id/left_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/block_padding"
+        android:src="@mipmap/login_people"/>
+
+    <EditText
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/txt_tips"
+        android:layout_marginLeft="@dimen/block_padding"
+        android:background="@null"/>
+
+    <ImageView
+        android:id="@+id/right_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/block_padding"
+        android:visibility="invisible"
+        android:src="@mipmap/ic_clear"/>
+
+</merge>

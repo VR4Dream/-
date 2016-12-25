@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weijie.vr4dream.ui.widget.MultiRadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MultiRadioGroupSmall"
+    >
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout">
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/building_all"
+            android:text="@string/text_no_limit"
+            android:checked="true"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/building_01"
+            android:layout_marginLeft="35dp"
+            android:text="单间"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/building_02"
+            android:text="二居"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/building_03"
+            android:layout_marginLeft="35dp"
+            android:text="三居"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/building_04"
+            android:text="四居"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/building_05"
+            android:layout_marginLeft="35dp"
+            android:text="五居"
+            />
+    </LinearLayout>
+</com.weijie.vr4dream.ui.widget.MultiRadioGroup>

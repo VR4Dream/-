@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.weijie.vr4dream.ui.widget.IconEditText
+        android:id="@+id/re_username"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_view_height"
+        vr:input_left="@mipmap/login_people"
+        vr:input_hint="@string/text_telphone">
+    </com.weijie.vr4dream.ui.widget.IconEditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/re_identify"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="@dimen/normal_view_height"
+            vr:input_left="@mipmap/login_people"
+            vr:input_hint="@string/text_identifying">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+        <Button
+            android:id="@+id/bt_identify"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="@dimen/normal_view_height"
+            android:enabled="false"
+            android:layout_marginLeft="@dimen/block_padding"
+            android:background="@drawable/selector_round_button_green"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_button"
+            android:text="@string/text_identifying_msg"/>
+    </LinearLayout>
+
+</merge>

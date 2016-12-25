@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 自定义进度条，高仿5.0 -->
+    <declare-styleable name="progress_wheel">
+        <attr name="mat_progress_indeterminate" format="boolean" />
+        <attr name="mat_bar_color" format="color" />
+        <attr name="mat_rim_color" format="color" />
+        <attr name="mat_rim_width" format="dimension" />
+        <attr name="mat_spin_speed" format="float" />
+        <attr name="mat_bar_spin_cycle_time" format="integer" />
+        <attr name="mat_circle_radius" format="dimension" />
+        <attr name="mat_fill_radius" format="boolean" />
+        <attr name="mat_bar_width" format="dimension" />
+        <attr name="mat_linear_progress" format="boolean" />
+    </declare-styleable>
+
+    <!-- 多状态选择view(加载中，加载失败，加载成功) -->
+    <declare-styleable name="multi_status_view">
+        <attr name="msv_loading" format="reference" />
+        <attr name="msv_err" format="reference" />
+        <attr name="msv_empty" format="reference" />
+        <attr name="msv_view_status" format="enum">
+            <enum name="loading" value="0" />
+            <enum name="error" value="1" />
+            <enum name="content" value="2" />
+            <enum name="empty" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="multi_swipe_refresh_layout">
+        <attr name="foreground" format="reference" />
+    </declare-styleable>
+
+    <!-- 自定义输入框 -->
+    <declare-styleable name="icon_edit">
+        <attr name="input_txt" format="string" />
+        <attr name="input_hint" format="string" />
+        <attr name="input_left" format="color|reference" />
+        <attr name="input_right" format="color|reference" />
+        <attr name="input_clear" format="boolean" />
+        <attr name="input_type" format="enum" >
+            <enum name="none" value="0" />
+            <enum name="number" value="1" />
+            <enum name="numberSigned" value="2" />
+            <!-- 有符号整数 -->
+            <enum name="numberDecimal" value="3" />
+            <!-- 有小数点数字 -->
+            <enum name="textPassword" value="4" />
+            <enum name="numberPassword" value="5" />
+            <enum name="phone" value="6" />
+        </attr>
+    </declare-styleable>
+
+</resources>

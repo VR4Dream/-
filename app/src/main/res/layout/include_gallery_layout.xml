@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titlebar_height"
+            android:paddingLeft="@dimen/block_padding"
+            android:paddingRight="@dimen/block_padding"
+            android:gravity="center_vertical"
+            android:background="@android:color/white">
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_menu"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                >
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_3d"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_radiobutton_left"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:textColor="@color/selector_gray_white_txt"
+                        android:textSize="@dimen/txt_content"
+                        android:text="3D"
+                        />
+                    <RadioButton
+                        android:id="@+id/rb_2d"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_radiobutton_right"
+                        android:gravity="center"
+                        android:textColor="@color/selector_gray_white_txt"
+                        android:textSize="@dimen/txt_content"
+                        android:text="2D"
+                        />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_question"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/shadow_height"
+            android:background="@drawable/shadow_bottom"
+            />
+
+        <com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout
+            android:id="@id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            cube_ptr:ptr_duration_to_close_header="1000"
+            cube_ptr:ptr_duration_to_close_footer="1000"
+            cube_ptr:ptr_keep_header_when_refresh="true"
+            cube_ptr:ptr_pull_to_fresh="false"
+            cube_ptr:ptr_ratio_of_header_height_to_refresh="1"
+            cube_ptr:ptr_resistance="2.0">
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lv_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </View>
+</FrameLayout>

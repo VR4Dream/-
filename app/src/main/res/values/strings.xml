@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">家装百科</string>
+
+    <string name="tips_net_err">网络出现异常，请检查一下</string>
+    <string name="text_retry">重新加载</string>
+    <string name="text_gallery">图库</string>
+    <string name="text_scene">场景</string>
+    <string name="text_idea">灵感</string>
+    <string name="text_mine">我</string>
+    <string name="text_user_name">用户名</string>
+    <string name="text_user_info">个人信息</string>
+    <string name="text_favourite">收藏</string>
+    <string name="text_setting">设置</string>
+    <string name="text_suggest">意见反馈</string>
+    <string name="text_share">推荐应用给好友</string>
+    <string name="text_input_username">请输入用户账号或者手机号</string>
+    <string name="text_telphone">请输入11位手机号</string>
+    <string name="text_identifying">请输入验证码</string>
+    <string name="text_identifying_msg">获取验证码</string>
+    <string name="text_input_password">请输入密码</string>
+    <string name="text_input_password_again">请再次输入密码</string>
+    <string name="text_login">登录</string>
+    <string name="text_login_msg">已有账号，前往登录</string>
+    <string name="text_forget_login">密码想起了？直接登录</string>
+    <string name="text_third_login">第三方账号登录</string>
+    <string name="text_register">没有账号 立即注册</string>
+    <string name="text_register_bt">注册</string>
+    <string name="text_sure">确认</string>
+    <string name="text_forget">忘记密码？</string>
+    <string name="text_qq">QQ</string>
+    <string name="text_taobao">淘宝</string>
+    <string name="text_weixin">微信</string>
+
+    <string name="text_build_real">楼盘实景</string>
+    <string name="text_vr_list">VR列表</string>
+    <string name="text_gallery_choice">图库筛选</string>
+    <string name="text_all_house">全屋</string>
+    <string name="text_part_house">局部</string>
+    <string name="text_build_type">户型</string>
+    <string name="text_no_limit">不限</string>
+    <string name="text_area">面积</string>
+    <string name="text_budget">预算</string>
+    <string name="text_style">风格</string>
+    <string name="text_hotness">热度</string>
+    <string name="text_intelligence">智能排序</string>
+    <string name="text_by_favourute">按点赞</string>
+
+    <string name="loading_tip1">家装百科，给您全新体验</string>
+    <string name="loading_tip2">正在刷新</string>
+    <string name="loading_tip3">正在加载</string>
+    <string name="loading_tip4">松开手开始加载</string>
+
+    <string name="input_the_true_number">请输入正确的手机号码！</string>
+    <string name="psw_must_same">两次输入的密码必须一致！</string>
+    <string name="input_true_identifying">请输入六位验证码！</string>
+    <string name="register_success">注册成功!</string>
+    <string name="login_success">登录成功!</string>
+    <string name="send_identify_success">验证码发送成功到您的手机，请保持信号畅通！</string>
+    <string name="double_register">该手机号码已被注册，不能重复注册！</string>
+    <string name="identify_wrong">验证码错误！</string>
+
+</resources>

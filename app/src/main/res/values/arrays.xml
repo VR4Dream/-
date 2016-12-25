@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_names">
+        <item>案例</item>
+        <item>客厅</item>
+        <item>卧室</item>
+        <item>儿童房</item>
+        <item>攻略</item>
+        <item>其他</item>
+    </string-array>
+</resources>

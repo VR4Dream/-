@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weijie.vr4dream.ui.widget.MultiRadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MultiRadioGroupSmall">
+
+    <LinearLayout
+        style="@style/MultiRadioGroupLayout"
+        android:layout_marginTop="8dp"
+        >
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/hotness_01"
+            android:text="@string/text_intelligence"
+            />
+
+        <RadioButton
+            style="@style/MultiRadioButtonSmall"
+            android:id="@+id/hotness_02"
+            android:layout_marginLeft="35dp"
+            android:text="@string/text_by_favourute"
+            />
+    </LinearLayout>
+
+</com.weijie.vr4dream.ui.widget.MultiRadioGroup>
