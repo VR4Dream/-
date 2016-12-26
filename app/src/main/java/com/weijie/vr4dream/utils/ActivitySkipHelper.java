@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.weijie.vr4dream.ui.activity.MainActivity;
 import com.weijie.vr4dream.ui.activity.idea.IdeaDetailActivity;
+import com.weijie.vr4dream.ui.activity.user.InfoActivity;
 import com.weijie.vr4dream.ui.activity.user.LoginActivity;
 import com.weijie.vr4dream.ui.activity.user.SettingActivity;
 
@@ -52,6 +53,16 @@ public class ActivitySkipHelper {
      */
     public static void toSettingActivity(Context context) {
         Intent intent = new Intent(context, SettingActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到个人信息
+     *
+     * @param context 上下文
+     */
+    public static void toInfoActivity(Context context) {
+        Intent intent = new Intent(context, InfoActivity.class);
         context.startActivity(intent);
     }
 

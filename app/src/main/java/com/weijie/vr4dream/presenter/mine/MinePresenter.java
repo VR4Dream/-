@@ -2,6 +2,7 @@ package com.weijie.vr4dream.presenter.mine;
 
 import android.content.Context;
 
+import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
 import com.weijie.vr4dream.presenter.BaseFragmentPresenter;
 import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
@@ -27,8 +28,17 @@ public class MinePresenter extends BaseFragmentPresenter<IMineView> implements I
     }
 
     @Override
-    public void clickPersonalData() {
+    public void clickHeadIcon() {
         ActivitySkipHelper.toLoginActivity(mContext);
+    }
+
+    @Override
+    public void clickPersonalData() {
+        if(App.getInstance().getUser()==null) {
+            mView.showLoginDialog("","亲，您还没有登录！");
+        } else {
+            ActivitySkipHelper.toInfoActivity(mContext);
+        }
     }
 
     @Override

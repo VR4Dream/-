@@ -16,5 +16,12 @@ public interface IMineView extends IBaseView {
      */
     void setUserName(String userName);
 
+    /**
+     *
+     * @param title dialog标题
+     * @param content dialog提示信息
+     */
+    void showLoginDialog(String title, String content);
+
 
 }

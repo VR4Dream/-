@@ -42,6 +42,7 @@
             >
 
             <TextView
+                android:id="@+id/tv_info"
                 style="@style/MineBlockViewClick"
                 android:drawableEnd="@mipmap/ic_right_arrow"
                 android:text="@string/text_user_info"/>

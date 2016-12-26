@@ -113,11 +113,13 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/login_qq"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:drawablePadding="3dp"
+                android:clickable="true"
                 android:drawableTop="@mipmap/login_qq"
                 android:textSize="@dimen/txt_tips"
                 android:textColor="@color/tipsColor"
@@ -125,11 +127,13 @@
                 />
 
             <TextView
+                android:id="@+id/login_wx"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:drawablePadding="3dp"
+                android:clickable="true"
                 android:drawableTop="@mipmap/login_weixin"
                 android:textSize="@dimen/txt_tips"
                 android:textColor="@color/tipsColor"
@@ -137,11 +141,13 @@
                 />
 
             <TextView
+                android:id="@+id/login_sina"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:drawablePadding="3dp"
+                android:clickable="true"
                 android:drawableTop="@mipmap/login_tao"
                 android:textSize="@dimen/txt_tips"
                 android:textColor="@color/tipsColor"

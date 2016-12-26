@@ -9,6 +9,7 @@ import com.weijie.vr4dream.presenter.mine.MinePresenter;
 import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
 import com.weijie.vr4dream.ui.fragment.BaseFragment;
 import com.weijie.vr4dream.ui.view.mine.IMineView;
+import com.weijie.vr4dream.ui.widget.AlertDialogFragment;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -45,14 +46,32 @@ public class MineFragment extends BaseFragment<MinePresenter> implements IMineVi
         tvUserName.setText(userName);
     }
 
-    @OnClick({R.id.ivHeadIcon, R.id.tv_setting})
+    @Override
+    public void showLoginDialog(String title, String content) {
+        AlertDialogFragment dialogFragment = AlertDialogFragment.getInstance(title, content);
+        dialogFragment.setOnDialogClickListener(new AlertDialogFragment.OnDialogClickListener() {
+            @Override
+            public void onPositiveButtonClickListener() {
+            }
+
+            @Override
+            public void onNegativeButtonClickListener() {
+            }
+        });
+        dialogFragment.show(getFragmentManager(), "loginTip");
+    }
+
+    @OnClick({R.id.ivHeadIcon, R.id.tv_setting, R.id.tv_info})
     void onTextMenuClick(View view) {
         switch (view.getId()) {
             case R.id.ivHeadIcon:
-                mPresenter.clickPersonalData();
+                mPresenter.clickHeadIcon();
                 break;
             case R.id.tv_setting:
                 mPresenter.clickSetting();
+                break;
+            case R.id.tv_info:
+                mPresenter.clickPersonalData();
                 break;
         }
     }

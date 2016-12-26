@@ -30,6 +30,11 @@
     <string name="text_qq">QQ</string>
     <string name="text_taobao">淘宝</string>
     <string name="text_weixin">微信</string>
+    <string name="text_prompt">提示</string>
+    <string name="text_ensure">确定</string>
+    <string name="text_cancel">取消</string>
+    <string name="login_now">立即登录</string>
+    <string name="login_later">继续逛逛</string>
 
     <string name="text_build_real">楼盘实景</string>
     <string name="text_vr_list">VR列表</string>

@@ -10,8 +10,14 @@ import com.weijie.vr4dream.ui.view.user.ILoginView;
 import com.weijie.vr4dream.ui.widget.IconEditText;
 import com.weijie.vr4dream.ui.widget.IdentifyView;
 
+import org.json.JSONObject;
+
 import butterknife.Bind;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 
 /**
  * 用户登录
@@ -79,7 +85,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     }
 
-    @OnClick({R.id.tv_login, R.id.tv_forget, R.id.tv_register, R.id.tv_forget_login, R.id.bt_register, R.id.bt_login})
+    @OnClick({R.id.tv_login, R.id.tv_forget, R.id.tv_register, R.id.tv_forget_login, R.id.bt_register, R.id.bt_login, R.id.login_qq})
     void clickMsg(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
@@ -103,6 +109,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                 break;
             case R.id.bt_login:
                 mPresenter.login(editUsername.getText().toString(), editPassword.getText().toString());
+                break;
+            case R.id.login_qq:
                 break;
             default:
                 break;

@@ -123,4 +123,15 @@
         <item name="android:textSize">@dimen/txt_tips_small</item>
     </style>
 
+    <!-- 用户信息菜单样式 -->
+    <style name="InfoView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/block_padding</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/selector_gray_green_txt</item>
+        <item name="android:textSize">@dimen/txt_content</item>
+    </style>
+
 </resources>

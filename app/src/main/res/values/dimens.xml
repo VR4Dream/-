@@ -25,7 +25,7 @@
 
     <!-- 按钮高度 -->
     <dimen name="normal_view_height">42dp</dimen>
-    <dimen name="normal_view_height_double">84.7dp</dimen>
+    <dimen name="normal_view_height_double">85dp</dimen>
 
     <!-- 阴影高度 -->
     <dimen name="shadow_height">1.5dp</dimen>

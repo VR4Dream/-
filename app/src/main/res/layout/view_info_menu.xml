@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txtColor"
+        android:textSize="@dimen/txt_button"
+        />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/txtColor"
+        android:textSize="@dimen/txt_content"
+        />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        />
+
+</merge>

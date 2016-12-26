@@ -16,6 +16,11 @@ public interface IMinePresenter extends IBasePresenter {
     void initViewInfo();
 
     /**
+     * 点击头像
+     */
+    void clickHeadIcon();
+
+    /**
      * 点击个人信息
      */
     void clickPersonalData();
