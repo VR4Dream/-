@@ -14,6 +14,7 @@
         >
 
         <TextView
+            android:id="@+id/tv_comment_num"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
             android:text="全部评论(0)"/>
 
         <TextView
+            android:id="@+id/tv_checked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
@@ -40,6 +42,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_add_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -51,17 +54,19 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/lv_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="@android:color/white"
         android:layout_marginBottom="15dp">
 
         <TextView
             android:id="@+id/tv_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:background="@android:color/white"
+            android:paddingTop="25dp"
             android:gravity="center"
             android:drawableTop="@mipmap/ic_nobody"
             android:textColor="@color/tipsColor"

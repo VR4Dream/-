@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
@@ -10,8 +11,11 @@
     cube_ptr:ptr_pull_to_fresh="false"
     cube_ptr:ptr_ratio_of_header_height_to_refresh="1"
     cube_ptr:ptr_resistance="2.0">
+
     <android.support.v7.widget.RecyclerView
         android:id="@id/recycleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
+
 </com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout>

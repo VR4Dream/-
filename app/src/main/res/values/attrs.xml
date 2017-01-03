@@ -56,6 +56,10 @@
         <attr name="txt_title" format="string" />
         <attr name="txt_content" format="string" />
         <attr name="icon_right" format="color|reference" />
+        <attr name="icon_left" format="color|reference" />
+        <attr name="txt_left" format="string" />
+        <attr name="txt_right" format="string" />
+        <attr name="txt_color" format="color" />
         <attr name="icon_height" format="dimension" />
         <attr name="icon_width" format="dimension" />
     </declare-styleable>

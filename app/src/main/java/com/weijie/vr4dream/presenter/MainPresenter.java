@@ -3,6 +3,7 @@ package com.weijie.vr4dream.presenter;
 import android.content.Context;
 
 import com.weijie.vr4dream.App;
+import com.weijie.vr4dream.model.VRUser;
 import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
 import com.weijie.vr4dream.ui.view.IMainView;
 
@@ -17,15 +18,6 @@ public class MainPresenter extends BaseActivityPresenter<IMainView> implements I
 
     public MainPresenter(Context context, IMainView view) {
         super(context, view);
-    }
-
-    @Override
-    public void loginStateChange(LoginStateChangeEvent event) {
-        if(event.isLogin()) {
-            App.getInstance().setUser(event.getBmobUser());
-        } else {
-            App.getInstance().setUser(null);
-        }
     }
 
     @Override

@@ -8,7 +8,6 @@ import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
 import com.weijie.vr4dream.adapter.FragmentTabAdapter;
 import com.weijie.vr4dream.presenter.MainPresenter;
-import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
 import com.weijie.vr4dream.rxEvent.SlidingMenuStatusEvent;
 import com.weijie.vr4dream.ui.fragment.gallery.GalleryFragment;
 import com.weijie.vr4dream.ui.fragment.idea.IdeaFragment;
@@ -20,7 +19,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import rx.functions.Action1;
 
 /**
  * 作者：guoweijie on 16/12/15 21:00
@@ -63,17 +61,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
      * 事件订阅
      */
     private void subscribeEvent() {
-        App.getInstance()
-                .getRxBus()
-                .subscribeNormalEvent(this, new Action1<Object>() {
-                    @Override
-                    public void call(Object o) {
-                        if (o instanceof LoginStateChangeEvent) {
-                            // 登陆状态更改
-                            mPresenter.loginStateChange((LoginStateChangeEvent) o);
-                        }
-                    }
-                });
     }
 
     @Override

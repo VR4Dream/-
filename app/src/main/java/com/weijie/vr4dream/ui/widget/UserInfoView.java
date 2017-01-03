@@ -54,4 +54,11 @@ public class UserInfoView extends LinearLayout {
         }
 
     }
+
+    public void setContent(String content) {
+        if(content!=null) {
+            tvContent.setText(content);
+        }
+    }
+
 }

@@ -2,6 +2,7 @@ package com.weijie.vr4dream.ui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 
 /**
@@ -32,6 +33,8 @@ public class ParallaxPtrFrameLayout extends PtrClassicFrameLayout {
         mParallaxHeader = new ParallaxHeader(getContext());
         setHeaderView(mParallaxHeader);
         addPtrUIHandler(mParallaxHeader);
+
+
     }
 
     public void addFooterView() {

@@ -64,4 +64,21 @@ public class StringUtil {
         return true;
     }
 
+    /**
+     * 验证邮箱
+     * @param email 邮箱
+     * @return 是否格式正确
+     */
+    public static boolean validateEmail(String email) {
+        String regex = "^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        if (TextUtils.isEmpty(email)) {
+            return false;
+        } else if (!matcher.matches()) {
+            return false;
+        }
+        return true;
+    }
+
 }

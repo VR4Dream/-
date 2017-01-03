@@ -10,14 +10,9 @@ import com.weijie.vr4dream.ui.view.user.ILoginView;
 import com.weijie.vr4dream.ui.widget.IconEditText;
 import com.weijie.vr4dream.ui.widget.IdentifyView;
 
-import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.LogInListener;
 
 /**
  * 用户登录

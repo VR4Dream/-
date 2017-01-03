@@ -9,7 +9,6 @@ import com.weijie.vr4dream.utils.RxBus;
 import java.io.File;
 
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
 
 /**
  * 作者：guoweijie on 16/12/15 17:11
@@ -43,8 +42,6 @@ public class App extends Application {
     private String mTestBaseUrl;
     // 当前接口版本号
     private String mInterfaceVersion;
-
-    private BmobUser user;
 
     @Override
     public void onCreate() {
@@ -214,11 +211,4 @@ public class App extends Application {
         return mInterfaceVersion;
     }
 
-    public BmobUser getUser() {
-        return user;
-    }
-
-    public void setUser(BmobUser user) {
-        this.user = user;
-    }
 }

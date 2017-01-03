@@ -7,12 +7,13 @@
     >
 
     <ImageView
+        android:id="@+id/iv_cover"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="2dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@mipmap/test2"/>
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,17 +28,17 @@
             android:singleLine="true"
             android:textSize="@dimen/txt_content"
             android:textColor="@color/txtColor"
-            android:text="40m²就够了！小户型扩容有妙招"/>
+            />
 
         <TextView
-            android:id="@+id/tv_type"
+            android:id="@+id/tv_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:layout_marginTop="2dp"
             android:textSize="@dimen/txt_tips_small"
             android:textColor="@color/tipsColor"
-            android:text="小户型、储物"/>
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -46,14 +47,16 @@
             android:orientation="horizontal"
             android:layout_marginTop="2dp">
             <TextView
+                android:id="@+id/tv_show"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="3dp"
                 android:drawableLeft="@mipmap/ic_gallery_view"
                 android:textColor="@color/txtColor"
                 android:textSize="@dimen/txt_mini"
-                android:text="118"/>
+                />
             <TextView
+                android:id="@+id/tv_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -61,7 +64,7 @@
                 android:drawableLeft="@mipmap/ic_gallery_love"
                 android:textColor="@color/txtColor"
                 android:textSize="@dimen/txt_mini"
-                android:text="2"/>
+                />
         </LinearLayout>
 
     </LinearLayout>

@@ -2,8 +2,6 @@ package com.weijie.vr4dream.presenter.user;
 
 import com.weijie.vr4dream.presenter.IBasePresenter;
 
-import cn.bmob.v3.BmobUser;
-
 /**
  * 登录界面
  * 作者：guoweijie on 16/12/16 14:05
@@ -30,14 +28,12 @@ public interface ILoginPresenter extends IBasePresenter {
 
     /**
      * 发送用户登录状态
-     * @param bmobUser
      */
-    void loginState(BmobUser bmobUser);
+    void loginState();
 
     /**
      * 发送用户退出状态
-     * @param bmobUser
      */
-    void logoutState(BmobUser bmobUser);
+    void logoutState();
 
 }

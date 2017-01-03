@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@android:color/white"
+        >
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:background="@drawable/selector_menu_button"
+            android:padding="10dp"
+            android:src="@mipmap/back_arrow"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/txtColor"
+            android:textSize="@dimen/txt_title"
+            android:text="@string/text_suggest"
+            />
+
+        <TextView
+            android:id="@+id/btn_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_menu_button"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/bgGreenPressed"
+            android:textSize="@dimen/txt_tips"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="提交"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/shadow_bottom"
+        />
+
+    <EditText
+        android:id="@+id/ev_suggest"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:maxLength="150"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="start"
+        android:textSize="@dimen/txt_content"
+        android:textColor="@color/txtColor"
+        android:padding="5dp"
+        android:hint="请输入您的建议，有助于我们更好的提高。"
+        android:background="@drawable/shape_round_edittext_white"/>
+
+
+</LinearLayout>

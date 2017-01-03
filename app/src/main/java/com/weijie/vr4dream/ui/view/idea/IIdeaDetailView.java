@@ -1,5 +1,6 @@
 package com.weijie.vr4dream.ui.view.idea;
 
+import com.weijie.vr4dream.model.IdeaComment;
 import com.weijie.vr4dream.ui.view.IBaseView;
 
 /**
@@ -8,4 +9,41 @@ import com.weijie.vr4dream.ui.view.IBaseView;
  * 邮箱：529844698@qq.com
  */
 public interface IIdeaDetailView extends IBaseView {
+
+    /**
+     * 加载页面
+     * @param link
+     */
+    void loadWeb(String link);
+
+    /**
+     * 改变likes图标状态
+     * @param status
+     */
+    void setLikesStatus(boolean status);
+
+    /**
+     * 改变收藏状态
+     * @param status
+     */
+    void setFavourite(boolean status);
+
+    /**
+     *
+     * @param content dialog提示信息
+     */
+    void showLoginDialog(String content);
+
+    /**
+     * 设置评论总数
+     * @param num
+     */
+    void setCommentNum(int num);
+
+    /**
+     * 刷新评论列表
+     * @param comment
+     */
+    void createComment(IdeaComment comment);
+
 }

@@ -40,6 +40,18 @@
         <item name="android:textSize">@dimen/txt_content</item>
     </style>
 
+    <style name="DetailPopupMenuStyle" parent="PopupMenuStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:background">@drawable/selector_menu_button</item>
+        <item name="android:clickable">true</item>
+    </style>
+
     <!-- 用户页面按钮样式 -->
     <style name="MineLayoutStyle">
         <item name="android:layout_width">match_parent</item>
@@ -121,6 +133,18 @@
     <style name="MultiRadioButtonSmall" parent="MultiRadioButton">
         <item name="android:layout_height">30dp</item>
         <item name="android:textSize">@dimen/txt_tips_small</item>
+    </style>
+
+    <style name="MultiCheckBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_radiobutton</item>
+        <item name="android:textColor">@color/selector_gray_green_txt</item>
+        <item name="android:textSize">@dimen/txt_content</item>
     </style>
 
     <!-- 用户信息菜单样式 -->

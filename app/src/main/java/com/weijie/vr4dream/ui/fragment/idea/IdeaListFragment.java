@@ -1,5 +1,6 @@
 package com.weijie.vr4dream.ui.fragment.idea;
 
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,16 +8,16 @@ import android.view.View;
 
 import com.weijie.vr4dream.R;
 import com.weijie.vr4dream.adapter.IdeaListAdapter;
+import com.weijie.vr4dream.adapter.LoadTipAdapter;
 import com.weijie.vr4dream.adapter.OnListItemClickListener;
+import com.weijie.vr4dream.model.Idea;
 import com.weijie.vr4dream.presenter.idea.IdeaListPresenter;
 import com.weijie.vr4dream.ui.fragment.BaseListFragment;
 import com.weijie.vr4dream.ui.view.idea.IIdeaListView;
 import com.weijie.vr4dream.ui.widget.RecyclerViewDivider;
 import com.weijie.vr4dream.utils.ActivitySkipHelper;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 文章列表
@@ -25,21 +26,28 @@ import java.util.Random;
  */
 public class IdeaListFragment extends BaseListFragment<IdeaListPresenter> implements IIdeaListView {
 
-    private List<String> mDataList;
     private IdeaListAdapter mAdapter;
+    private LoadTipAdapter tipAdapter;
+    private int type;
 
     @Override
     protected void initialize() {
         recyclerView.addItemDecoration(new RecyclerViewDivider(mContext, LinearLayoutManager.VERTICAL, 20, ContextCompat.getColor(mContext, android.R.color.transparent)));
         mAdapter = new IdeaListAdapter(mContext);
         mAdapter.setOnItemClickListener(itemClickListener);
+        tipAdapter = new LoadTipAdapter(mContext);
         recyclerView.setAdapter(mAdapter);
+
+        Bundle bundle = getArguments();
+        if (bundle != null)
+            type = bundle.getInt("type", 1);
+
     }
 
     private OnListItemClickListener itemClickListener = new OnListItemClickListener() {
         @Override
-        public void onItemClickListener(View itemView, int position) {
-            ActivitySkipHelper.toIdeaDetailActivity(mContext);
+        public void onItemClickListener(View itemView, Object obj) {
+            ActivitySkipHelper.toIdeaDetailActivity(mContext, (Idea)obj);
         }
     };
 
@@ -62,32 +70,44 @@ public class IdeaListFragment extends BaseListFragment<IdeaListPresenter> implem
 
     @Override
     protected void onLoadMore() {
-        mPtrFrameLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mDataList.add("决战紫禁城");
-                mAdapter.notifyDataSetChanged();
-                mPtrFrameLayout.refreshComplete();
-                mIsLoadingMore = false;
-            }
-        }, 2000);
+        mPresenter.loadMore(false,type);
     }
 
     @Override
     protected void onRefresh() {
-        mPtrFrameLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mDataList = new ArrayList<>();
-                Random random = new Random();
-                int num = random.nextInt(10);
-                for (int i = 0; i < num; i++) {
-                    mDataList.add("我是第" + i + "个");
-                }
-                mAdapter.notifyDataSetChanged(mDataList);
+        mPresenter.loadMore(true, type);
+    }
 
-                mPtrFrameLayout.refreshComplete();
-            }
-        }, 2000);
+    @Override
+    public void refreshView(List<Idea> ideas) {
+        mAdapter.notifyDataSetChanged(ideas);
+        mPtrFrameLayout.refreshComplete();
+    }
+
+    @Override
+    public void loadMoreView(List<Idea> ideas) {
+        mAdapter.loadMore(ideas);
+        mPtrFrameLayout.refreshComplete();
+    }
+
+    @Override
+    public void hideTip() {
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void showTip(LoadTipAdapter.ViewStatus status) {
+        recyclerView.setAdapter(tipAdapter);
+        tipAdapter.notifyDataSetChanged(status);
+    }
+
+    @Override
+    public void setLoadStatus(boolean isLoadingMore) {
+        mIsLoadingMore = isLoadingMore;
+    }
+
+    @Override
+    public void refreshComplete() {
+        mPtrFrameLayout.refreshComplete();
     }
 }

@@ -1,5 +1,6 @@
 package com.weijie.vr4dream.adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -24,10 +25,17 @@ public class PagerAdapter extends FragmentPagerAdapter {
         if(tabs.length>1) {
             IdeaListFragment fragment = new IdeaListFragment();
             fragment.refreshOnActivityCreated = true;
+            Bundle bundle = new Bundle();
+            bundle.putInt("type", 1);
+            fragment.setArguments(bundle);
             mFragments.add(fragment);
         }
         for(int i = 1; i < tabs.length; i++) {
-            mFragments.add(new IdeaListFragment());
+            IdeaListFragment fragment = new IdeaListFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("type", i+1);
+            fragment.setArguments(bundle);
+            mFragments.add(fragment);
         }
     }
 

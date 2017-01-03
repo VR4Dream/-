@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_backgroup"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/btn_likes"
+        style="@style/DetailPopupMenuStyle"
+        android:drawableLeft="@drawable/selector_likes"
+        android:text="喜欢"/>
+
+    <include layout="@layout/divider_line_horizontal" />
+    
+    <TextView
+        android:id="@+id/btn_favourite"
+        style="@style/DetailPopupMenuStyle"
+        android:drawableLeft="@drawable/selector_favourite"
+        android:text="收藏"/>
+
+    <include layout="@layout/divider_line_horizontal" />
+    
+    <TextView
+        android:id="@+id/btn_share"
+        style="@style/DetailPopupMenuStyle"
+        android:drawableLeft="@mipmap/ic_red_share"
+        android:text="分享"/>
+
+    <include layout="@layout/divider_line_horizontal" />
+
+    <TextView
+        android:id="@+id/btn_comment"
+        style="@style/DetailPopupMenuStyle"
+        android:drawableLeft="@mipmap/ic_red_comment"
+        android:text="评论"/>
+
+</LinearLayout>

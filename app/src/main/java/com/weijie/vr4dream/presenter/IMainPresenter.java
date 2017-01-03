@@ -9,11 +9,4 @@ import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
  */
 public interface IMainPresenter extends IBasePresenter {
 
-    /**
-     * 用户登陆状态更改
-     *
-     * @param event 事件
-     */
-    void loginStateChange(LoginStateChangeEvent event);
-
 }

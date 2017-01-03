@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
+import com.weijie.vr4dream.model.VRUser;
 import com.weijie.vr4dream.presenter.BaseActivityPresenter;
 import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
 import com.weijie.vr4dream.ui.view.user.ILoginView;
@@ -31,11 +32,11 @@ public class LoginPresenter extends BaseActivityPresenter<ILoginView> implements
     @Override
     public void login(String tel, String password) {
         mView.showProgressDialog();
-        BmobUser.loginByAccount(tel, password, new LogInListener<BmobUser>() {
+        BmobUser.loginByAccount(tel, password, new LogInListener<VRUser>() {
             @Override
-            public void done(BmobUser bmobUser, BmobException e) {
-                if(bmobUser!=null) {
-                    loginState(bmobUser);
+            public void done(VRUser user, BmobException e) {
+                if(user!=null) {
+                    loginState();
                     mView.finish();
                 } else {
                     mView.showTips(ErrorUtil.getErrorMsg(e));
@@ -54,14 +55,14 @@ public class LoginPresenter extends BaseActivityPresenter<ILoginView> implements
         } else if(code.length()!=6) {
             mView.showTips(mContext.getString(R.string.input_true_identifying));
         } else {
-            BmobUser user = new BmobUser();
+            VRUser user = new VRUser();
             user.setMobilePhoneNumber(tel);
             user.setPassword(psw);
             user.signOrLogin(code, new SaveListener<BmobUser>() {
                 @Override
                 public void done(BmobUser bmobUser, BmobException e) {
                     if(bmobUser != null) {
-                        loginState(bmobUser);
+                        loginState();
                         mView.showTips(mContext.getString(R.string.register_success));
                         mView.finish();
                     } else {
@@ -88,14 +89,14 @@ public class LoginPresenter extends BaseActivityPresenter<ILoginView> implements
     }
 
     @Override
-    public void loginState(BmobUser bmobUser) {
+    public void loginState() {
         App.getInstance()
                 .getRxBus()
-                .sendNormalEvent(new LoginStateChangeEvent(true, bmobUser));
+                .sendNormalEvent(new LoginStateChangeEvent(true));
     }
 
     @Override
-    public void logoutState(BmobUser bmobUser) {
+    public void logoutState() {
 
     }
 }

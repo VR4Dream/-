@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <CheckBox
+            android:id="@+id/style_01"
+            style="@style/MultiCheckBox"
+            android:text="现代"
+            />
+        <CheckBox
+            android:id="@+id/style_02"
+            style="@style/MultiCheckBox"
+            android:text="中式"
+            />
+        <CheckBox
+            android:id="@+id/style_03"
+            style="@style/MultiCheckBox"
+            android:text="美式"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <CheckBox
+            android:id="@+id/style_04"
+            style="@style/MultiCheckBox"
+            android:text="北欧"
+            />
+        <CheckBox
+            android:id="@+id/style_05"
+            style="@style/MultiCheckBox"
+            android:text="法式"
+            />
+        <CheckBox
+            android:id="@+id/style_06"
+            style="@style/MultiCheckBox"
+            android:text="韩式"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <CheckBox
+            android:id="@+id/style_07"
+            style="@style/MultiCheckBox"
+            android:text="欧式"
+            />
+        <CheckBox
+            android:id="@+id/style_08"
+            style="@style/MultiCheckBox"
+            android:text="东南亚"
+            />
+        <CheckBox
+            android:id="@+id/style_09"
+            style="@style/MultiCheckBox"
+            android:text="乡村"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

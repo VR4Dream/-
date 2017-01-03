@@ -58,11 +58,31 @@
                 style="@style/MineBlockView"
                 android:text="@string/text_scene"/>
             <include layout="@layout/divider_line_horizontal" />
-            <TextView
-                style="@style/MineBlockViewClick"
-                android:drawableEnd="@mipmap/ic_right_arrow"
-                android:drawableStart="@mipmap/ic_favourite"
-                android:text="@string/text_favourite"/>
+
+            <LinearLayout
+                android:id="@+id/tv_gallery_fav"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/normal_view_height"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal"
+                android:clickable="true"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@mipmap/ic_favourite"
+                    android:text="@string/text_favourite"/>
+                <TextView
+                    android:id="@+id/tv_gallery_fav_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableEnd="@mipmap/ic_right_arrow"
+                    android:text="0"/>
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -75,11 +95,30 @@
                 style="@style/MineBlockView"
                 android:text="@string/text_idea"/>
             <include layout="@layout/divider_line_horizontal" />
-            <TextView
-                style="@style/MineBlockViewClick"
-                android:drawableEnd="@mipmap/ic_right_arrow"
-                android:drawableStart="@mipmap/ic_favourite"
-                android:text="@string/text_favourite"/>
+
+            <LinearLayout
+                android:id="@+id/tv_idea_fav"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/normal_view_height"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal"
+                android:clickable="true"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@mipmap/ic_favourite"
+                    android:text="@string/text_favourite"/>
+                <TextView
+                    android:id="@+id/tv_idea_fav_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableEnd="@mipmap/ic_right_arrow"
+                    android:text="0"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -95,6 +134,7 @@
                 android:text="@string/text_setting"/>
             <include layout="@layout/divider_line_horizontal" />
             <TextView
+                android:id="@+id/tv_suggest"
                 style="@style/MineBlockViewClick"
                 android:drawableEnd="@mipmap/ic_right_arrow"
                 android:text="@string/text_suggest"/>
@@ -107,6 +147,7 @@
             >
 
             <TextView
+                android:id="@+id/tv_share"
                 style="@style/MineBlockViewClick"
                 android:text="@string/text_share"/>
 

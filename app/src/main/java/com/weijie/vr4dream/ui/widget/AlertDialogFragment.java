@@ -22,7 +22,6 @@ import com.weijie.vr4dream.R;
 public class AlertDialogFragment extends DialogFragment {
     private static AlertDialogFragment fragment;
 
-    private static String title;
     private static String content;
     private static String positiveText;
     private static String negativeText;
@@ -45,25 +44,7 @@ public class AlertDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    public static AlertDialogFragment getInstance(String title, String content) {
-        AlertDialogFragment.title = title;
-        AlertDialogFragment.content = content;
-        if (fragment == null)
-            fragment = new AlertDialogFragment();
-        return fragment;
-    }
-
-    public static AlertDialogFragment getInstance(String title, String content, boolean negativeButtonVisible) {
-        AlertDialogFragment.title = title;
-        AlertDialogFragment.content = content;
-        AlertDialogFragment.negativeButtonVisible = negativeButtonVisible;
-        if (fragment == null)
-            fragment = new AlertDialogFragment();
-        return fragment;
-    }
-
-    public static AlertDialogFragment getInstance(String title, String content, String positiveText, String negativeText) {
-        AlertDialogFragment.title = title;
+    public static AlertDialogFragment getInstance(String content, String positiveText, String negativeText) {
         AlertDialogFragment.content = content;
         AlertDialogFragment.positiveText = positiveText;
         AlertDialogFragment.negativeText = negativeText;
@@ -72,8 +53,7 @@ public class AlertDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    public static AlertDialogFragment getInstance(String title, String content, String positiveText, String negativeText, boolean negativeButtonVisible) {
-        AlertDialogFragment.title = title;
+    public static AlertDialogFragment getInstance(String content, String positiveText, String negativeText, boolean negativeButtonVisible) {
         AlertDialogFragment.content = content;
         AlertDialogFragment.positiveText = positiveText;
         AlertDialogFragment.negativeText = negativeText;
@@ -88,7 +68,7 @@ public class AlertDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().setCanceledOnTouchOutside(true);
-        View contentView = inflater.inflate(R.layout.fragment_dialog, container, false);
+        View contentView = inflater.inflate(R.layout.fragment_alert_dialog, container, false);
         initView(contentView);
         return contentView;
     }
@@ -105,10 +85,6 @@ public class AlertDialogFragment extends DialogFragment {
     }
 
     private void initView(View contentView) {
-        TextView tvTitle = (TextView) contentView.findViewById(R.id.tvTitle);
-        if (!TextUtils.isEmpty(title))
-            tvTitle.setText(title);
-
         TextView tvContent = (TextView) contentView.findViewById(R.id.tvContent);
         if (!TextUtils.isEmpty(content))
             tvContent.setText(content);

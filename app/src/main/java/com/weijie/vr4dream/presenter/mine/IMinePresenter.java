@@ -11,9 +11,9 @@ import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
 public interface IMinePresenter extends IBasePresenter {
 
     /**
-     * 初始化界面信息
+     * 初始化数据
      */
-    void initViewInfo();
+    void initInfo();
 
     /**
      * 点击头像
@@ -51,17 +51,8 @@ public interface IMinePresenter extends IBasePresenter {
     void clickShare();
 
     /**
-     * 账号输入框聚焦
-     */
-    void onAccountInputFocus();
-
-    /**
-     * 密码输入框聚焦
-     */
-    void onPasswordInputFocus();
-
-    /**
      * 登录状态改变
      */
     void loginStateChange(LoginStateChangeEvent event);
+
 }

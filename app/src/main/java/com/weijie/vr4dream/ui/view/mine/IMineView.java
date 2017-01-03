@@ -18,10 +18,20 @@ public interface IMineView extends IBaseView {
 
     /**
      *
-     * @param title dialog标题
      * @param content dialog提示信息
      */
-    void showLoginDialog(String title, String content);
+    void showLoginDialog(String content);
 
+    /**
+     * 设置灵感收藏数
+     * @param num
+     */
+    void setIdeaNum(int num);
+
+    /**
+     * 设置VR收藏数
+     * @param num
+     */
+    void setGalleryNum(int num);
 
 }

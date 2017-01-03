@@ -48,6 +48,7 @@
             android:orientation="vertical">
 
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_icon"
                 style="@style/InfoView"
                 android:layout_marginTop="5dp"
                 vr:txt_title="头像"
@@ -56,6 +57,7 @@
                 vr:icon_width="50dp">
             </com.weijie.vr4dream.ui.widget.UserInfoView>
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_name"
                 style="@style/InfoView"
                 android:layout_marginTop="1dp"
                 vr:txt_title="昵称"
@@ -64,6 +66,7 @@
                 vr:icon_width="28dp">
             </com.weijie.vr4dream.ui.widget.UserInfoView>
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_tel"
                 style="@style/InfoView"
                 android:layout_marginTop="1dp"
                 vr:txt_title="手机号码"
@@ -72,6 +75,7 @@
                 vr:icon_width="28dp">
             </com.weijie.vr4dream.ui.widget.UserInfoView>
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_psw"
                 style="@style/InfoView"
                 android:layout_marginTop="1dp"
                 vr:txt_title="修改密码"
@@ -80,6 +84,7 @@
                 vr:icon_width="28dp">
             </com.weijie.vr4dream.ui.widget.UserInfoView>
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_email"
                 style="@style/InfoView"
                 android:layout_marginTop="1dp"
                 vr:txt_title="邮箱"
@@ -89,6 +94,7 @@
             </com.weijie.vr4dream.ui.widget.UserInfoView>
 
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_sex"
                 style="@style/InfoView"
                 android:layout_marginTop="5dp"
                 vr:txt_title="性别"
@@ -98,6 +104,7 @@
             </com.weijie.vr4dream.ui.widget.UserInfoView>
 
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_style"
                 style="@style/InfoView"
                 android:layout_marginTop="1dp"
                 vr:txt_title="装修风格喜好"
@@ -107,6 +114,7 @@
             </com.weijie.vr4dream.ui.widget.UserInfoView>
 
             <com.weijie.vr4dream.ui.widget.UserInfoView
+                android:id="@+id/ui_register_date"
                 style="@style/InfoView"
                 android:layout_marginTop="5dp"
                 vr:txt_title="注册时间"
@@ -114,6 +122,16 @@
                 vr:icon_height="28dp"
                 >
             </com.weijie.vr4dream.ui.widget.UserInfoView>
+
+            <Button
+                android:id="@+id/bt_logout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/normal_view_height"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:background="@drawable/selector_round_button_green"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/txt_button"
+                android:text="@string/logout"/>
 
         </LinearLayout>
     </ScrollView>

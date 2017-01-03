@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr4dream="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <com.weijie.vr4dream.ui.widget.TitleBarView
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        vr4dream:txt_title="添加评论"
+        vr4dream:icon_left="@mipmap/back_arrow"
+        vr4dream:txt_right="提交"
+        >
+    </com.weijie.vr4dream.ui.widget.TitleBarView>
+
+    <EditText
+        android:id="@+id/ev_comment"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:maxLength="150"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="start"
+        android:textSize="@dimen/txt_content"
+        android:textColor="@color/txtColor"
+        android:padding="5dp"
+        android:hint="请输入您的评论。"
+        android:background="@drawable/shape_round_edittext_white"/>
+
+</LinearLayout>
