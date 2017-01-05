@@ -7,4 +7,6 @@ package com.weijie.vr4dream.config;
  */
 public class AppConstant {
 
+    public static final String HISTORYS = "historys";
+
 }

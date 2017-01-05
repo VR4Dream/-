@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr4dream="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lv_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <com.weijie.vr4dream.ui.widget.TitleBarView
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        vr4dream:txt_title="楼盘实景"
+        vr4dream:icon_left="@mipmap/back_arrow"
+        >
+    </com.weijie.vr4dream.ui.widget.TitleBarView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/arrow_down"
+            android:textColor="@color/tipsColor"
+            android:textSize="@dimen/txt_content"
+            android:text="全国"/>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/ev_estate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            vr4dream:input_left="@mipmap/ic_search"
+            vr4dream:input_hint="请输入楼盘名"
+            >
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/selector_round_button_green"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_button"
+            android:text="搜索"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/shadow_bottom"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout
+            android:id="@id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            vr4dream:ptr_duration_to_close_header="1000"
+            vr4dream:ptr_keep_header_when_refresh="true"
+            vr4dream:ptr_pull_to_fresh="false"
+            vr4dream:ptr_ratio_of_header_height_to_refresh="1"
+            vr4dream:ptr_resistance="2.0">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout>
+
+        <include layout="@layout/include_search_record"></include>
+
+    </FrameLayout>
+
+</LinearLayout>
+
+

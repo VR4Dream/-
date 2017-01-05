@@ -1,25 +1,27 @@
 package com.weijie.vr4dream.ui.fragment.gallery;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
-import com.weijie.vr4dream.adapter.VRListAdapter;
+import com.weijie.vr4dream.adapter.LoadTipAdapter;
+import com.weijie.vr4dream.adapter.OnListItemClickListener;
+import com.weijie.vr4dream.adapter.GalleryListAdapter;
+import com.weijie.vr4dream.model.Gallery;
 import com.weijie.vr4dream.presenter.gallery.GalleryPresenter;
 import com.weijie.vr4dream.rxEvent.SlidingMenuStatusEvent;
-import com.weijie.vr4dream.ui.fragment.BaseFragment;
+import com.weijie.vr4dream.ui.fragment.BaseListFragment;
 import com.weijie.vr4dream.ui.view.gallery.IGalleryView;
 import com.weijie.vr4dream.ui.widget.MultiRadioGroup;
-import com.weijie.vr4dream.ui.widget.ParallaxPtrFrameLayout;
+import com.weijie.vr4dream.ui.widget.RecyclerViewDivider;
 import com.weijie.vr4dream.ui.widget.VRSlidingMenu;
+import com.weijie.vr4dream.utils.ActivitySkipHelper;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -34,10 +36,12 @@ import rx.functions.Action1;
  * 作者：guoweijie on 16/12/16 09:31
  * 邮箱：529844698@qq.com
  */
-public class GalleryFragment extends BaseFragment<GalleryPresenter> implements IGalleryView {
+public class GalleryFragment extends BaseListFragment<GalleryPresenter> implements IGalleryView {
 
     @Bind(R.id.vr_slidingmenu)
     VRSlidingMenu vrSlidingMenu;
+    @Bind(R.id.rg_house)
+    MultiRadioGroup rgHouse;
     @Bind(R.id.rg_build)
     MultiRadioGroup rgBuild;
     @Bind(R.id.rg_area)
@@ -49,13 +53,8 @@ public class GalleryFragment extends BaseFragment<GalleryPresenter> implements I
     @Bind(R.id.rg_hotness)
     MultiRadioGroup rgHotness;
 
-    private VRListAdapter mVRListAdapter;
-    private List<String> mDataList;
-
-    @Bind(R.id.refreshLayout)
-    ParallaxPtrFrameLayout mPtrFrameLayout;
-    @Bind(R.id.recycleView)
-    RecyclerView recyclerView;
+    private GalleryListAdapter mAdapter;
+    private LoadTipAdapter tipAdapter;
 
     @Override
     protected int getLayoutResId() {
@@ -71,22 +70,26 @@ public class GalleryFragment extends BaseFragment<GalleryPresenter> implements I
     protected void initialize() {
         subscribeEvent();
 
+        setCheckedListener();
+
+        refreshOnActivityCreated = true;
+        recyclerView.addItemDecoration(new RecyclerViewDivider(mContext, LinearLayoutManager.VERTICAL, 20, ContextCompat.getColor(mContext, android.R.color.transparent)));
+        mAdapter = new GalleryListAdapter(mContext);
+        mAdapter.setOnItemClickListener(itemClickListener);
+        tipAdapter = new LoadTipAdapter(mContext);
+        recyclerView.setAdapter(mAdapter);
+
         mPtrFrameLayout.addFooterView();
         mPtrFrameLayout.setPtrHandler(mPtrHandler);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.setHasFixedSize(true);
-        mVRListAdapter = new VRListAdapter(mContext);
-        recyclerView.setAdapter(mVRListAdapter);
-
-        // 由于PtrFrameLayout的自动刷新需要在onWindowFocusChanged(boolean)之后调用，所以这里延时250ms.
-        mPtrFrameLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPtrFrameLayout.autoRefresh();
-            }
-        }, 250);
     }
+
+    private OnListItemClickListener itemClickListener = new OnListItemClickListener() {
+        @Override
+        public void onItemClickListener(View itemView, Object obj) {
+            ActivitySkipHelper.toGalleryDetailActivity(mContext, null);
+        }
+    };
 
     /**
      * 刷新监听。
@@ -94,41 +97,76 @@ public class GalleryFragment extends BaseFragment<GalleryPresenter> implements I
     private PtrHandler mPtrHandler = new PtrDefaultHandler2() {
         @Override
         public void onRefreshBegin(PtrFrameLayout frame) {
-            // 这里延时2000ms，模拟网络请求。
-            mPtrFrameLayout.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    requestDataList();
-                }
-            }, 2000);
+            onRefresh();
         }
 
         @Override
         public void onLoadMoreBegin(PtrFrameLayout frame) {
-            mPtrFrameLayout.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mDataList.add("决战紫禁城");
-                    mVRListAdapter.notifyDataSetChanged(mDataList);
-                    mPtrFrameLayout.refreshComplete();
-                }
-            }, 2000);
+            onLoadMore();
         }
     };
 
-    private void requestDataList() {
-        mDataList = new ArrayList<>();
-        Random random = new Random();
-        int num = random.nextInt(10);
-        for (int i = 0; i < num; i++) {
-            mDataList.add("我是第" + i + "个");
-        }
-        mVRListAdapter.notifyDataSetChanged(mDataList);
+    @Override
+    protected void onLoadMore() {
+        mPresenter.loadMore(false);
+    }
 
+    @Override
+    protected void onRefresh() {
+        mPresenter.loadMore(true);
+    }
+
+    @Override
+    public void refreshView(List<Gallery> gallerys) {
+        mAdapter.notifyDataSetChanged(gallerys);
         mPtrFrameLayout.refreshComplete();
     }
 
-    @OnClick({R.id.tv_build_type, R.id.tv_area, R.id.tv_budget, R.id.tv_style, R.id.tv_hotness})
+    @Override
+    public void loadMoreView(List<Gallery> gallerys) {
+        mAdapter.loadMore(gallerys);
+        mPtrFrameLayout.refreshComplete();
+    }
+
+    @Override
+    public void hideTip() {
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void showTip(LoadTipAdapter.ViewStatus status) {
+        recyclerView.setAdapter(tipAdapter);
+        tipAdapter.notifyDataSetChanged(status);
+    }
+
+    @Override
+    public void refreshComplete() {
+        mPtrFrameLayout.refreshComplete();
+    }
+
+    @Override
+    public void autoRefresh() {
+        mPtrFrameLayout.autoRefresh();
+    }
+
+    @Override
+    public void hideMenu() {
+        vrSlidingMenu.hideMenu();
+    }
+
+    @Override
+    public void setLoadStatus(boolean isLoadingMore) {
+        mIsLoadingMore = isLoadingMore;
+    }
+
+    @Override
+    protected RecyclerView.LayoutManager getRecyclerViewLayoutManager() {
+        LinearLayoutManager lm = new LinearLayoutManager(mContext);
+        lm.setOrientation(LinearLayoutManager.VERTICAL);
+        return lm;
+    }
+
+    @OnClick({R.id.tv_build_type, R.id.tv_area, R.id.tv_budget, R.id.tv_style, R.id.tv_hotness, R.id.tv_build_rel})
     void onRadioGroupTvClick(View view) {
         switch (view.getId()) {
             case R.id.tv_build_type:
@@ -146,6 +184,9 @@ public class GalleryFragment extends BaseFragment<GalleryPresenter> implements I
             case R.id.tv_hotness:
                 rgHotness.setVisibility(rgHotness.getVisibility()==View.GONE ? View.VISIBLE : View.GONE);
                 break;
+            case R.id.tv_build_rel:
+                mPresenter.clickBuildingEstate();
+                break;
         }
     }
 
@@ -162,12 +203,128 @@ public class GalleryFragment extends BaseFragment<GalleryPresenter> implements I
     void onToolBtClick(View view) {
         switch (view.getId()) {
             case R.id.iv_menu:
-                Toast.makeText(mContext, "-----", Toast.LENGTH_SHORT).show();
+                vrSlidingMenu.toggle();
                 break;
             case R.id.iv_question:
                 break;
         }
     }
+
+    private void setCheckedListener() {
+        rgHouse.setOnCheckedChangeListener(listener);
+        rgBuild.setOnCheckedChangeListener(listener);
+        rgHotness.setOnCheckedChangeListener(listener);
+        rgBudget.setOnCheckedChangeListener(listener);
+        rgArea.setOnCheckedChangeListener(listener);
+        rgStyle.setOnCheckedChangeListener(listener);
+    }
+
+    private MultiRadioGroup.OnCheckedChangeListener listener = new MultiRadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(MultiRadioGroup group, int checkedId) {
+            switch (checkedId) {
+                case R.id.rb_all_house:
+                    mPresenter.setParam(GalleryPresenter.MODE, true);
+                    break;
+                case R.id.rb_part_house:
+                    mPresenter.setParam(GalleryPresenter.MODE, false);
+                    break;
+                case R.id.building_all:
+                    mPresenter.removeParam(GalleryPresenter.BUILDTYPE);
+                    break;
+                case R.id.building_01:
+                    mPresenter.setParam(GalleryPresenter.BUILDTYPE, 1);
+                    break;
+                case R.id.building_02:
+                    mPresenter.setParam(GalleryPresenter.BUILDTYPE, 2);
+                    break;
+                case R.id.building_03:
+                    mPresenter.setParam(GalleryPresenter.BUILDTYPE, 3);
+                    break;
+                case R.id.building_04:
+                    mPresenter.setParam(GalleryPresenter.BUILDTYPE, 4);
+                    break;
+                case R.id.building_05:
+                    mPresenter.setParam(GalleryPresenter.BUILDTYPE, 5);
+                    break;
+                case R.id.area_all:
+                    mPresenter.removeParam(GalleryPresenter.AREA);
+                    break;
+                case R.id.area_01:
+                    mPresenter.setParam(GalleryPresenter.AREA, 1);
+                    break;
+                case R.id.area_02:
+                    mPresenter.setParam(GalleryPresenter.AREA, 2);
+                    break;
+                case R.id.area_03:
+                    mPresenter.setParam(GalleryPresenter.AREA, 3);
+                    break;
+                case R.id.area_04:
+                    mPresenter.setParam(GalleryPresenter.AREA, 4);
+                    break;
+                case R.id.area_05:
+                    mPresenter.setParam(GalleryPresenter.AREA, 5);
+                    break;
+                case R.id.area_06:
+                    mPresenter.setParam(GalleryPresenter.AREA, 6);
+                    break;
+                case R.id.budget_all:
+                    mPresenter.removeParam(GalleryPresenter.BUDGET);
+                    break;
+                case R.id.budget_01:
+                    mPresenter.setParam(GalleryPresenter.BUDGET, 1);
+                    break;
+                case R.id.budget_02:
+                    mPresenter.setParam(GalleryPresenter.BUDGET, 2);
+                    break;
+                case R.id.budget_03:
+                    mPresenter.setParam(GalleryPresenter.BUDGET, 3);
+                    break;
+                case R.id.budget_04:
+                    mPresenter.setParam(GalleryPresenter.BUDGET, 4);
+                    break;
+                case R.id.budget_05:
+                    mPresenter.setParam(GalleryPresenter.BUDGET, 5);
+                    break;
+                case R.id.style_all:
+                    mPresenter.removeParam(GalleryPresenter.STYLE);
+                    break;
+                case R.id.style_01:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 1);
+                    break;
+                case R.id.style_02:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 2);
+                    break;
+                case R.id.style_03:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 3);
+                    break;
+                case R.id.style_04:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 4);
+                    break;
+                case R.id.style_05:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 5);
+                    break;
+                case R.id.style_06:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 6);
+                    break;
+                case R.id.style_07:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 7);
+                    break;
+                case R.id.style_08:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 8);
+                    break;
+                case R.id.style_09:
+                    mPresenter.setParam(GalleryPresenter.STYLE, 9);
+                    break;
+                case R.id.hotness_01:
+                    mPresenter.setParam(GalleryPresenter.HOTNESS, "-createdAt");
+                    break;
+                case R.id.hotness_02:
+                    mPresenter.setParam(GalleryPresenter.HOTNESS, "-likeNum");
+                    break;
+            }
+        }
+    };
 
     /**
      * 事件订阅

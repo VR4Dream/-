@@ -10,4 +10,15 @@
         android:scrollbars="none"
         >
     </WebView>
+
+    <TextView
+        android:id="@+id/btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_menu_button"
+        android:drawableLeft="@mipmap/abc_ic_ab_back_holo_light"
+        android:clickable="true"
+        android:padding="10dp"
+        android:gravity="center"
+        />
 </FrameLayout>

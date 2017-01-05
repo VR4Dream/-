@@ -23,43 +23,54 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_menu"/>
 
-            <LinearLayout
+            <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                >
+                android:background="@android:color/white"
+                android:textColor="@color/txtColor"
+                android:textSize="@dimen/txt_title"
+                android:text="@string/text_scene"
+                />
 
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:id="@+id/rb_3d"
-                        android:layout_width="75dp"
-                        android:layout_height="30dp"
-                        android:button="@null"
-                        android:background="@drawable/selector_radiobutton_left"
-                        android:checked="true"
-                        android:gravity="center"
-                        android:textColor="@color/selector_gray_white_txt"
-                        android:textSize="@dimen/txt_content"
-                        android:text="3D"
-                        />
-                    <RadioButton
-                        android:id="@+id/rb_2d"
-                        android:layout_width="75dp"
-                        android:layout_height="30dp"
-                        android:button="@null"
-                        android:background="@drawable/selector_radiobutton_right"
-                        android:gravity="center"
-                        android:textColor="@color/selector_gray_white_txt"
-                        android:textSize="@dimen/txt_content"
-                        android:text="2D"
-                        />
-                </RadioGroup>
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:gravity="center"-->
+                <!-->-->
 
-            </LinearLayout>
+                <!--<RadioGroup-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal">-->
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/rb_3d"-->
+                        <!--android:layout_width="75dp"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:button="@null"-->
+                        <!--android:background="@drawable/selector_radiobutton_left"-->
+                        <!--android:checked="true"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="@color/selector_gray_white_txt"-->
+                        <!--android:textSize="@dimen/txt_content"-->
+                        <!--android:text="3D"-->
+                        <!--/>-->
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/rb_2d"-->
+                        <!--android:layout_width="75dp"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:button="@null"-->
+                        <!--android:background="@drawable/selector_radiobutton_right"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="@color/selector_gray_white_txt"-->
+                        <!--android:textSize="@dimen/txt_content"-->
+                        <!--android:text="2D"-->
+                        <!--/>-->
+                <!--</RadioGroup>-->
+
+            <!--</LinearLayout>-->
 
             <ImageView
                 android:id="@+id/iv_question"

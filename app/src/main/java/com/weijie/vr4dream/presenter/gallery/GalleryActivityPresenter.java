@@ -3,16 +3,13 @@ package com.weijie.vr4dream.presenter.gallery;
 import android.content.Context;
 
 import com.weijie.vr4dream.adapter.LoadTipAdapter;
+import com.weijie.vr4dream.model.BuildingEstate;
 import com.weijie.vr4dream.model.Gallery;
-import com.weijie.vr4dream.presenter.BaseFragmentPresenter;
-import com.weijie.vr4dream.ui.view.gallery.IGalleryView;
-import com.weijie.vr4dream.utils.ActivitySkipHelper;
+import com.weijie.vr4dream.presenter.BaseActivityPresenter;
+import com.weijie.vr4dream.ui.view.gallery.IGalleryActivityView;
 import com.weijie.vr4dream.utils.ErrorUtil;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -23,58 +20,25 @@ import cn.bmob.v3.listener.FindListener;
  * 作者：guoweijie on 16/12/16 10:52
  * 邮箱：529844698@qq.com
  */
-public class GalleryPresenter extends BaseFragmentPresenter<IGalleryView> implements IGalleryPresenter {
-
-    private HashMap<String, Object> params;
-
-    public static final String MODE = "mode";
-    public static final String BUILDTYPE = "buildType";
-    public static final String AREA = "area";
-    public static final String BUDGET = "budget";
-    public static final String STYLE = "style";
-    public static final String HOTNESS = "hotness";
+public class GalleryActivityPresenter extends BaseActivityPresenter<IGalleryActivityView> implements IGalleryActivityPresenter {
 
     private static final int PAGE_SIZE = 3;
     private int page = 0;
 
-    public GalleryPresenter(Context context, IGalleryView view) {
+    public GalleryActivityPresenter(Context context, IGalleryActivityView view) {
         super(context, view);
-        params = new HashMap<>();
-        params.put(MODE, true);
-        params.put(HOTNESS, "-createdAt");
     }
 
     @Override
-    public void setParam(String key, Object value) {
-        params.put(key, value);
-        mView.hideMenu();
-        mView.autoRefresh();
-    }
-
-    @Override
-    public void removeParam(String key) {
-        params.remove(key);
-        mView.hideMenu();
-        mView.autoRefresh();
-    }
-
-    @Override
-    public void loadMore(final boolean refresh) {
+    public void loadMore(final boolean refresh, String id) {
         if(refresh) {
             mView.setLoadStatus(false);
             page = 0;
         }
+        BuildingEstate estate = new BuildingEstate();
+        estate.setObjectId(id);
         BmobQuery<Gallery> query = new BmobQuery<>();
-        Iterator entries = params.entrySet().iterator();
-        while (entries.hasNext()) {
-            Map.Entry entry = (Map.Entry) entries.next();
-            String key = (String)entry.getKey();
-            Object value = entry.getValue();
-            if(!key.equals(HOTNESS)) {
-                query.addWhereEqualTo(key, value);
-            }
-        }
-        query.include("buildingEstate.name").setLimit(PAGE_SIZE).setSkip(page*PAGE_SIZE).order((String)params.get(HOTNESS))
+        query.include("buildingEstate.name").addWhereEqualTo("buildingEstate", estate).setLimit(PAGE_SIZE).setSkip(page*PAGE_SIZE).order("-createdAt")
                 .findObjects(new FindListener<Gallery>() {
                     @Override
                     public void done(List<Gallery> object, BmobException e) {
@@ -108,8 +72,4 @@ public class GalleryPresenter extends BaseFragmentPresenter<IGalleryView> implem
                 });
     }
 
-    @Override
-    public void clickBuildingEstate() {
-        ActivitySkipHelper.toBuildingEstateActivity(mContext);
-    }
 }

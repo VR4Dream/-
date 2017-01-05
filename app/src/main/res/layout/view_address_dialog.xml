@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weijie.vr4dream.ui.widget.CityPicker
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/citypicker"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="#ffff"
+    android:gravity="center"
+    android:orientation="vertical">
+</com.weijie.vr4dream.ui.widget.CityPicker>

@@ -11,7 +11,7 @@ import java.util.List;
  * 作者：guoweijie on 16/12/19 10:23
  * 邮箱：529844698@qq.com
  */
-public interface IGalleryView extends IBaseView {
+public interface IGalleryActivityView extends IBaseView {
 
     /**
      * 下拉刷新
@@ -36,16 +36,6 @@ public interface IGalleryView extends IBaseView {
     void showTip(LoadTipAdapter.ViewStatus status);
 
     void refreshComplete();
-
-    /**
-     * 自动下拉刷新
-     */
-    void autoRefresh();
-
-    /**
-     * 隐藏侧滑菜单
-     */
-    void hideMenu();
 
     /**
      * 设置加载状态 true正在加载

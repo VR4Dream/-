@@ -3,10 +3,15 @@ package com.weijie.vr4dream.utils;
 import android.content.Context;
 import android.content.Intent;
 
+import com.weijie.vr4dream.model.BuildingEstate;
+import com.weijie.vr4dream.model.Gallery;
 import com.weijie.vr4dream.model.Idea;
+import com.weijie.vr4dream.ui.activity.BuildingEstateActivity;
 import com.weijie.vr4dream.ui.activity.CommentActivity;
 import com.weijie.vr4dream.ui.activity.CommentListActivity;
 import com.weijie.vr4dream.ui.activity.MainActivity;
+import com.weijie.vr4dream.ui.activity.gallery.GalleryDetailActivity;
+import com.weijie.vr4dream.ui.activity.gallery.GalleryListActiity;
 import com.weijie.vr4dream.ui.activity.idea.IdeaDetailActivity;
 import com.weijie.vr4dream.ui.activity.user.InfoActivity;
 import com.weijie.vr4dream.ui.activity.user.LoginActivity;
@@ -48,6 +53,17 @@ public class ActivitySkipHelper {
     public static void toIdeaDetailActivity(Context context, Idea idea) {
         Intent intent = new Intent(context, IdeaDetailActivity.class);
         intent.putExtra("data", idea);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到VR详情页
+     *
+     * @param context 上下文
+     */
+    public static void toGalleryDetailActivity(Context context, Gallery gallery) {
+        Intent intent = new Intent(context, GalleryDetailActivity.class);
+        intent.putExtra("data", gallery);
         context.startActivity(intent);
     }
 
@@ -100,6 +116,26 @@ public class ActivitySkipHelper {
     public static void toCommentListActivity(Context context, String id) {
         Intent intent = new Intent(context, CommentListActivity.class);
         intent.putExtra("id", id);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到楼盘列表
+     * @param context
+     */
+    public static void toBuildingEstateActivity(Context context) {
+        Intent intent = new Intent(context, BuildingEstateActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到图库列表
+     * @param context
+     * @param estate
+     */
+    public static void toGalleryListActivity(Context context, BuildingEstate estate) {
+        Intent intent = new Intent(context, GalleryListActiity.class);
+        intent.putExtra("data", estate);
         context.startActivity(intent);
     }
 

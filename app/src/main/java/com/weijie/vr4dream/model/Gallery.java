@@ -36,6 +36,9 @@ public class Gallery extends Idea {
     //楼盘
     private BuildingEstate buildingEstate;
 
+    //2D链接
+    private String link2d;
+
     public Boolean getMode() {
         return mode;
     }
@@ -82,5 +85,59 @@ public class Gallery extends Idea {
 
     public void setBuildingEstate(BuildingEstate buildingEstate) {
         this.buildingEstate = buildingEstate;
+    }
+
+    public String getLink2d() {
+        return link2d;
+    }
+
+    public void setLink2d(String link2d) {
+        this.link2d = link2d;
+    }
+
+    public String getTitleText() {
+        return buildingEstate.getName()+getBuildTypeText()+getStyleText();
+    }
+
+    private String getBuildTypeText() {
+        switch (buildType) {
+            case 1:
+                return "-单间";
+            case 2:
+                return "-二居";
+            case 3:
+                return "-三居";
+            case 4:
+                return "-四居";
+            case 5:
+                return "-五居";
+            default:
+                return "";
+        }
+    }
+
+    private String getStyleText() {
+        switch (style) {
+            case 1:
+                return "-现代";
+            case 2:
+                return "-中式";
+            case 3:
+                return "-美式";
+            case 4:
+                return "-北欧";
+            case 5:
+                return "-法式";
+            case 6:
+                return "-韩式";
+            case 7:
+                return "-欧式";
+            case 8:
+                return "-东南亚";
+            case 9:
+                return "-乡村";
+            default:
+                return "";
+        }
     }
 }

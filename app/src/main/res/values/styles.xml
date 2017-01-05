@@ -158,4 +158,14 @@
         <item name="android:textSize">@dimen/txt_content</item>
     </style>
 
+    <style name="TextSearch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textColor">@color/txtColor</item>
+        <item name="android:textSize">@dimen/txt_tips</item>
+    </style>
+
 </resources>

@@ -56,6 +56,10 @@ public class TitleBarView extends LinearLayout {
 
     }
 
+    public void setTitle(String title) {
+        tvTitle.setText(title);
+    }
+
 
 
 }

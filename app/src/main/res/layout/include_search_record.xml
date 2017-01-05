@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr4dream="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/lv_search"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.weijie.vr4dream.ui.widget.SearchLayout
+        android:id="@+id/slv_history"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        vr4dream:txt_left="历史记录"
+        vr4dream:txt_right="清除记录"
+        android:layout_marginBottom="10dp">
+    </com.weijie.vr4dream.ui.widget.SearchLayout>
+
+    <com.weijie.vr4dream.ui.widget.SearchLayout
+        android:id="@+id/slv_estate"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        vr4dream:txt_left="热门楼盘"
+        android:layout_marginBottom="10dp">
+    </com.weijie.vr4dream.ui.widget.SearchLayout>
+
+    <com.weijie.vr4dream.ui.widget.SearchLayout
+        android:id="@+id/slv_city"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        vr4dream:txt_left="热门城市"
+        >
+    </com.weijie.vr4dream.ui.widget.SearchLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"></View>
+
+
+</LinearLayout>
