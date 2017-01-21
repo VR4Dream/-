@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingRight="38dp"
+    android:background="#fff"
+    >
+    <ImageView
+        android:id="@+id/iv_hide_menu"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-2dp"
+        android:clickable="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_menu_point2"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/rg_vr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_3d"
+                android:layout_width="70dp"
+                android:layout_height="28dp"
+                android:button="@null"
+                android:background="@drawable/selector_radiobutton_left"
+                android:checked="true"
+                android:gravity="center"
+                android:textColor="@color/selector_gray_white_txt"
+                android:textSize="@dimen/txt_content"
+                android:text="3D"
+                />
+            <RadioButton
+                android:id="@+id/rb_2d"
+                android:layout_width="70dp"
+                android:layout_height="28dp"
+                android:button="@null"
+                android:background="@drawable/selector_radiobutton_right"
+                android:gravity="center"
+                android:textColor="@color/selector_gray_white_txt"
+                android:textSize="@dimen/txt_content"
+                android:text="2D"
+                />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <include layout="@layout/divider_line_horizontal"></include>
+            <TextView
+                android:id="@+id/btn_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="22dp"
+                android:textColor="@color/selector_black_gray_txt"
+                android:textSize="@dimen/txt_tips_small"
+                android:drawableLeft="@drawable/selector_likes"
+                android:text="喜欢"/>
+            <include layout="@layout/divider_line_horizontal"></include>
+            <TextView
+                android:id="@+id/btn_favourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="22dp"
+                android:textColor="@color/selector_black_gray_txt"
+                android:textSize="@dimen/txt_tips_small"
+                android:drawableLeft="@drawable/selector_favourite"
+                android:text="收藏"/>
+            <include layout="@layout/divider_line_horizontal"></include>
+            <TextView
+                android:id="@+id/btn_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="22dp"
+                android:textColor="@color/selector_black_gray_txt"
+                android:textSize="@dimen/txt_tips_small"
+                android:drawableLeft="@mipmap/ic_red_share"
+                android:text="分享"/>
+            <include layout="@layout/divider_line_horizontal"></include>
+            <TextView
+                android:id="@+id/btn_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="22dp"
+                android:textColor="@color/selector_black_gray_txt"
+                android:textSize="@dimen/txt_tips_small"
+                android:drawableLeft="@mipmap/ic_red_comment"
+                android:text="评论"/>
+            <include layout="@layout/divider_line_horizontal"></include>
+            <!--<TextView-->
+                <!--android:id="@+id/btn_recommend"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:clickable="true"-->
+                <!--android:layout_marginTop="19dp"-->
+                <!--android:layout_marginBottom="19dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:drawablePadding="22dp"-->
+                <!--android:textColor="@color/selector_black_gray_txt"-->
+                <!--android:textSize="@dimen/txt_tips_small"-->
+                <!--android:drawableLeft="@mipmap/red_recommand"-->
+                <!--android:text="推荐"/>-->
+            <!--<include layout="@layout/divider_line_horizontal"></include>-->
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

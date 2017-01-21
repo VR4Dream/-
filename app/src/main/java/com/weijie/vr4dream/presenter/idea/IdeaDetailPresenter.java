@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
 import com.weijie.vr4dream.App;
+import com.weijie.vr4dream.model.Comment;
 import com.weijie.vr4dream.model.Idea;
 import com.weijie.vr4dream.model.IdeaComment;
 import com.weijie.vr4dream.model.VRUser;
@@ -20,6 +21,7 @@ import com.weijie.vr4dream.utils.JSONUtils;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import cn.bmob.v3.AsyncCustomEndpoints;
@@ -27,6 +29,14 @@ import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.CloudCodeListener;
 import cn.bmob.v3.listener.UpdateListener;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
 
 /**
  * 文章详情
@@ -39,7 +49,7 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
     private Idea idea;
     private boolean isLikes;
     private boolean isFavourite;
-    private List<IdeaComment> comments;
+    private List<Comment> comments;
 
     public IdeaDetailPresenter(Context context, IIdeaDetailView view) {
         super(context, view);
@@ -121,14 +131,14 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
             mIdea.update(new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
-                    if(e==null) {
+                    if (e == null) {
                         isLikes = !isLikes;
                         mView.setLikesStatus(isLikes);
                         idea.setLikes(relation);
-                        if(isLikes) {
-                            idea.setLikesNum(likesNum+1);
+                        if (isLikes) {
+                            idea.setLikesNum(likesNum + 1);
                         } else {
-                            idea.setLikesNum(likesNum-1);
+                            idea.setLikesNum(likesNum - 1);
                         }
 
                     } else {
@@ -186,7 +196,7 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
         if(user==null) {
             mView.showLoginDialog("亲，您还没有登录！");
         } else {
-            ActivitySkipHelper.toCommentActivity(mContext, idea.getObjectId());
+            ActivitySkipHelper.toCommentActivity(mContext, idea.getObjectId(), 1);
         }
     }
 
@@ -195,7 +205,7 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
         if(user==null) {
             mView.showLoginDialog("亲，您还没有登录！");
         } else {
-            ActivitySkipHelper.toCommentListActivity(mContext, idea.getObjectId());
+            ActivitySkipHelper.toCommentListActivity(mContext, idea.getObjectId(), 1);
         }
     }
 
@@ -231,9 +241,12 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
                             JSONObject json = new JSONObject(msg);
                             mView.setCommentNum(json.optInt("count"));
                             TypeToken<ArrayList<IdeaComment>> typeToken = new TypeToken<ArrayList<IdeaComment>>(){};
-                            comments = JSONUtils.toList(json, "results", typeToken);
-                            for(IdeaComment comment:comments) {
-                                mView.createComment(comment);
+                            List<IdeaComment> ideas = JSONUtils.toList(json, "results", typeToken);
+                            comments = new ArrayList<Comment>();
+                            for(IdeaComment comment:ideas) {
+                                Comment c = new Comment(comment.getAuthor(), comment.getContent(), comment.getCreatedAt());
+                                comments.add(c);
+                                mView.createComment(c);
                             }
                         } catch (Exception e1) {
                             e1.printStackTrace();
@@ -252,5 +265,87 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
                 .getRxBus()
                 .sendNormalEvent(new FavouriteChangeEvent(tag, active));
     }
+
+    @Override
+    public void shareQQ() {
+        QQ.ShareParams sp = new QQ.ShareParams();
+        sp.setTitle(idea.getTitle());
+        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setImageUrl(idea.getCover());
+        sp.setSiteUrl("http://www.h7sc.com");
+        Platform qq = ShareSDK.getPlatform(QQ.NAME);
+        qq.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        qq.share(sp);
+    }
+
+    @Override
+    public void shareSpace() {
+        QZone.ShareParams sp = new QZone.ShareParams();
+        sp.setTitle(idea.getTitle());
+        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setImageUrl(idea.getCover());
+        sp.setSiteUrl("http://www.h7sc.com");
+        Platform qzone = ShareSDK.getPlatform (QZone.NAME);
+        qzone.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        qzone.share(sp);
+    }
+
+    @Override
+    public void shareBlog() {
+        SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
+        sp.setTitle(idea.getTitle());
+        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setImageUrl(idea.getCover());
+        sp.setSiteUrl("http://www.h7sc.com");
+        Platform sina = ShareSDK.getPlatform (SinaWeibo.NAME);
+        sina.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        sina.share(sp);
+    }
+
+    @Override
+    public void shareWeChat() {
+        Wechat.ShareParams sp = new Wechat.ShareParams();
+        sp.setTitle(idea.getTitle());
+        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setImageUrl(idea.getCover());
+        sp.setSiteUrl("http://www.h7sc.com");
+        Platform wechat = ShareSDK.getPlatform (Wechat.NAME);
+        wechat.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        wechat.share(sp);
+    }
+
+    @Override
+    public void shareWechatMoments() {
+        WechatMoments.ShareParams sp = new WechatMoments.ShareParams();
+        sp.setTitle(idea.getTitle());
+        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setImageUrl(idea.getCover());
+        sp.setSiteUrl("http://www.h7sc.com");
+        Platform wechatMoments = ShareSDK.getPlatform (WechatMoments.NAME);
+        wechatMoments.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        wechatMoments.share(sp);
+    }
+
+    private PlatformActionListener listener = new PlatformActionListener() {
+        @Override
+        public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+            mView.showTips("分享成功");
+        }
+
+        @Override
+        public void onError(Platform platform, int i, Throwable throwable) {
+            mView.showTips("分享失败");
+        }
+
+        @Override
+        public void onCancel(Platform platform, int i) {
+            mView.showTips("取消分享");
+        }
+    };
 
 }

@@ -62,4 +62,29 @@ public interface IIdeaDeatilPresenter  extends IBasePresenter {
      */
     void addComment(AddCommentEvent event);
 
+    /**
+     * 分享给QQ好友
+     */
+    void shareQQ();
+
+    /**
+     * 分享到QQ空间
+     */
+    void shareSpace();
+
+    /**
+     * 分享到新浪微博
+     */
+    void shareBlog();
+
+    /**
+     * 分享到微信好友
+     */
+    void shareWeChat();
+
+    /**
+     * 分享到朋友圈
+     */
+    void shareWechatMoments();
+
 }

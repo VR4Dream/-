@@ -1,6 +1,6 @@
 package com.weijie.vr4dream.ui.view.idea;
 
-import com.weijie.vr4dream.model.IdeaComment;
+import com.weijie.vr4dream.model.Comment;
 import com.weijie.vr4dream.ui.view.IBaseView;
 
 /**
@@ -44,6 +44,6 @@ public interface IIdeaDetailView extends IBaseView {
      * 刷新评论列表
      * @param comment
      */
-    void createComment(IdeaComment comment);
+    void createComment(Comment comment);
 
 }

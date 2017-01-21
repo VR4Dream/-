@@ -38,4 +38,5 @@ public class IdeaComment extends BmobObject {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

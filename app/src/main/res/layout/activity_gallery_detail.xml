@@ -16,9 +16,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_menu_button"
-        android:drawableLeft="@mipmap/abc_ic_ab_back_holo_light"
+        android:drawableLeft="@mipmap/mybackbtn"
         android:clickable="true"
         android:padding="10dp"
         android:gravity="center"
         />
+
+    <ImageView
+        android:id="@+id/iv_show_menu"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:src="@mipmap/ic_menu_point"/>
+
 </FrameLayout>

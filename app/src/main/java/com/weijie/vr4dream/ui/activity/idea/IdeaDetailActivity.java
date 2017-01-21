@@ -1,10 +1,15 @@
 package com.weijie.vr4dream.ui.activity.idea;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -17,8 +22,8 @@ import android.view.ViewGroup.LayoutParams;
 import com.bumptech.glide.Glide;
 import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
+import com.weijie.vr4dream.model.Comment;
 import com.weijie.vr4dream.model.Idea;
-import com.weijie.vr4dream.model.IdeaComment;
 import com.weijie.vr4dream.presenter.idea.IdeaDetailPresenter;
 import com.weijie.vr4dream.rxEvent.AddCommentEvent;
 import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
@@ -26,6 +31,7 @@ import com.weijie.vr4dream.ui.activity.BaseActivity;
 import com.weijie.vr4dream.ui.view.idea.IIdeaDetailView;
 import com.weijie.vr4dream.ui.widget.AlertDialogFragment;
 import com.weijie.vr4dream.ui.widget.CircleImageView;
+import com.weijie.vr4dream.ui.widget.ShareDialog;
 import com.weijie.vr4dream.utils.SpannableUtils;
 import com.weijie.vr4dream.utils.StringUtil;
 
@@ -53,6 +59,8 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
     TextView btnFavourite;
 
     private PopupWindow popupWindow;
+    private ShareDialog dialog;
+    private WindowManager.LayoutParams params;
 
     @Override
     protected void initPresenter() {
@@ -153,6 +161,22 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
                     break;
                 case R.id.btn_share:
                     hidePopupWindow();
+                    showShareDialog();
+                    break;
+                case R.id.btn_qq:
+                    mPresenter.shareQQ();
+                    break;
+                case R.id.btn_space:
+                    mPresenter.shareSpace();
+                    break;
+                case R.id.btn_wechat:
+                    mPresenter.shareWeChat();
+                    break;
+                case R.id.btn_circle:
+                    mPresenter.shareWechatMoments();
+                    break;
+                case R.id.btn_blog:
+                    mPresenter.shareBlog();
                     break;
             }
         }
@@ -191,6 +215,43 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
         }
     }
 
+    private void showShareDialog() {
+        if(dialog == null) {
+            dialog = new ShareDialog(this,R.style.dialog_setting);
+
+            dialog.findViewById(R.id.btn_qq).setOnClickListener(menListener);
+            dialog.findViewById(R.id.btn_space).setOnClickListener(menListener);
+            dialog.findViewById(R.id.btn_wechat).setOnClickListener(menListener);
+            dialog.findViewById(R.id.btn_circle).setOnClickListener(menListener);
+            dialog.findViewById(R.id.btn_blog).setOnClickListener(menListener);
+
+            Window window = dialog.getWindow();
+            window.setGravity(Gravity.BOTTOM);
+            window.setWindowAnimations(R.style.dialog_animation_down); // 添加动画
+            WindowManager windowManager = getWindowManager();
+            Display display = windowManager.getDefaultDisplay();
+            params = dialog.getWindow().getAttributes();
+            params.width = (int) (display.getWidth());
+            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    WindowManager.LayoutParams params = IdeaDetailActivity.this.dialog.getWindow().getAttributes();
+                    params.dimAmount = 0.0f;
+                    IdeaDetailActivity.this.dialog.getWindow().setAttributes(params);
+                }
+            });
+        }
+        params.dimAmount=0.5f;
+        dialog.getWindow().setAttributes(params);
+        dialog.show();
+    }
+
+    private void hideShareDialog() {
+        if(dialog != null)
+            dialog.hide();
+    }
+
     @Override
     public void showLoginDialog(String content) {
         AlertDialogFragment dialogFragment = AlertDialogFragment.getInstance(content);
@@ -198,6 +259,7 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
             @Override
             public void onPositiveButtonClickListener() {
             }
+
             @Override
             public void onNegativeButtonClickListener() {
                 mPresenter.clickLogin();
@@ -207,7 +269,7 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
     }
 
     @Override
-    public void createComment(IdeaComment comment) {
+    public void createComment(Comment comment) {
         tvComment.setVisibility(View.GONE);
         LayoutInflater inflater = getLayoutInflater();
         View item = inflater.inflate(R.layout.item_comment, null, false);
@@ -215,7 +277,7 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
         setCommentInfo(item, comment);
     }
 
-    private void setCommentInfo(View view, IdeaComment comment) {
+    private void setCommentInfo(View view, Comment comment) {
         TextView name = (TextView)view.findViewById(R.id.tv_name);
         TextView date = (TextView)view.findViewById(R.id.tv_date);
         TextView content = (TextView)view.findViewById(R.id.tv_content);
@@ -229,7 +291,7 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
         content.setText(comment.getContent());
         Glide.with(mContext)
                 .load(comment.getAuthor().getIcon().getUrl())
-                //.load("http://bmob-cdn-8496.b0.upaiyun.com/2016/12/30/7ec4915040a639f1804c6ce0b54b832b.jpeg")
+                        //.load("http://bmob-cdn-8496.b0.upaiyun.com/2016/12/30/7ec4915040a639f1804c6ce0b54b832b.jpeg")
                 .crossFade()
                 .placeholder(R.mipmap.user_pic)
                 .error(R.mipmap.user_pic)
@@ -248,8 +310,7 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
                         if (o instanceof LoginStateChangeEvent) {
                             // 登陆状态更改
                             mPresenter.loginStateChange((LoginStateChangeEvent) o);
-                        } else if(o instanceof AddCommentEvent) {
-                            // 登陆状态更改
+                        } else if (o instanceof AddCommentEvent) {
                             mPresenter.addComment((AddCommentEvent) o);
                         }
                     }
@@ -263,4 +324,6 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
                 .unSubscribe(this);
         super.onDestroy();
     }
+
+
 }

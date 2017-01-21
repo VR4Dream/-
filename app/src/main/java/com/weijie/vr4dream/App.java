@@ -3,12 +3,14 @@ package com.weijie.vr4dream;
 import android.app.Application;
 
 import com.weijie.vr4dream.config.AppConfig;
+import com.weijie.vr4dream.config.AppConstant;
 import com.weijie.vr4dream.utils.FileUtil;
 import com.weijie.vr4dream.utils.RxBus;
 
 import java.io.File;
 
 import cn.bmob.v3.Bmob;
+import cn.sharesdk.framework.ShareSDK;
 
 /**
  * 作者：guoweijie on 16/12/15 17:11
@@ -47,7 +49,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        Bmob.initialize(mInstance, "3aefa2db08b19ecf61a8771d43afc413");
+        ShareSDK.initSDK(mInstance);
+        Bmob.initialize(mInstance, AppConstant.BMOB_APPID);
         //初始化bmob
         //BmobConfigUtil.initialize(mInstance);
 

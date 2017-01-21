@@ -36,4 +36,19 @@ public interface ILoginPresenter extends IBasePresenter {
      */
     void logoutState();
 
+    /**
+     * QQ第三方登录
+     */
+    void loginByQQ();
+
+    /**
+     * 微信第三方登录
+     */
+    void loginByWeiXin();
+
+    /**
+     * 新浪微博登录
+     */
+    void loginBySina();
+
 }

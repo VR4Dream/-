@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr4dream="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.weijie.vr4dream.ui.widget.TitleBarView
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        vr4dream:txt_title="完善资料"
+        vr4dream:icon_left="@mipmap/back_arrow"
+        >
+    </com.weijie.vr4dream.ui.widget.TitleBarView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        >
+        <com.weijie.vr4dream.ui.widget.IdentifyView
+            android:id="@+id/rs_identify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </com.weijie.vr4dream.ui.widget.IdentifyView>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/re_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr4dream:input_left="@mipmap/login_password"
+            vr4dream:input_hint="@string/text_input_password"
+            vr4dream:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <com.weijie.vr4dream.ui.widget.IconEditText
+            android:id="@+id/re_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            vr4dream:input_left="@mipmap/login_password"
+            vr4dream:input_hint="@string/text_input_password_again"
+            vr4dream:input_type="textPassword">
+        </com.weijie.vr4dream.ui.widget.IconEditText>
+
+        <Button
+            android:id="@+id/bt_bind"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/selector_round_button_green"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_button"
+            android:text="@string/text_bind"/>
+
+    </LinearLayout>
+</LinearLayout>

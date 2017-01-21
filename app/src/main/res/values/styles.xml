@@ -168,4 +168,25 @@
         <item name="android:textSize">@dimen/txt_tips</item>
     </style>
 
+    <style name="dialog_setting"  parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>//背景设置为透明
+    </style>
+
+    <!--控制dialog进出动画-->
+    <style name="dialog_animation" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="@android:windowExitAnimation">@anim/slide_out_right</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!--控制dialog进出动画-->
+    <style name="dialog_animation_down" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+
+
+
 </resources>

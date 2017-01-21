@@ -1,6 +1,7 @@
 package com.weijie.vr4dream.presenter.user;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
@@ -8,8 +9,14 @@ import com.weijie.vr4dream.model.VRUser;
 import com.weijie.vr4dream.presenter.BaseActivityPresenter;
 import com.weijie.vr4dream.rxEvent.LoginStateChangeEvent;
 import com.weijie.vr4dream.ui.view.user.ILoginView;
+import com.weijie.vr4dream.utils.ActivitySkipHelper;
 import com.weijie.vr4dream.utils.ErrorUtil;
 import com.weijie.vr4dream.utils.StringUtil;
+
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.BmobUser;
@@ -17,6 +24,13 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.PlatformDb;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * 用户登陆
@@ -35,7 +49,7 @@ public class LoginPresenter extends BaseActivityPresenter<ILoginView> implements
         BmobUser.loginByAccount(tel, password, new LogInListener<VRUser>() {
             @Override
             public void done(VRUser user, BmobException e) {
-                if(user!=null) {
+                if (user != null) {
                     loginState();
                     mView.finish();
                 } else {
@@ -97,6 +111,114 @@ public class LoginPresenter extends BaseActivityPresenter<ILoginView> implements
 
     @Override
     public void logoutState() {
-
+        BmobUser.logOut();
     }
+
+    @Override
+    public void loginByQQ() {
+        Platform plat = ShareSDK.getPlatform(QQ.NAME);
+        if (plat == null) {
+            return;
+        }
+
+        if (plat.isAuthValid()) {
+            plat.removeAccount(true);
+            return;
+        }
+
+        //使用SSO授权，通过客户单授权
+        plat.SSOSetting(false);
+        plat.setPlatformActionListener(listener);
+        plat.showUser(null);
+    }
+
+    @Override
+    public void loginByWeiXin() {
+        Platform plat = ShareSDK.getPlatform(Wechat.NAME);
+        if (plat == null) {
+            return;
+        }
+
+        if (plat.isAuthValid()) {
+            plat.removeAccount(true);
+            return;
+        }
+
+        plat.SSOSetting(false);
+        plat.setPlatformActionListener(listener);
+        plat.showUser(null);
+    }
+
+    @Override
+    public void loginBySina() {
+        Platform plat = ShareSDK.getPlatform(SinaWeibo.NAME);
+        if (plat == null) {
+            return;
+        }
+
+        if (plat.isAuthValid()) {
+            plat.removeAccount(true);
+            return;
+        }
+
+        plat.SSOSetting(false);
+        plat.setPlatformActionListener(listener);
+        plat.showUser(null);
+    }
+
+    private PlatformActionListener listener = new PlatformActionListener() {
+        @Override
+        public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+            PlatformDb db = platform.getDb();
+            BmobUser.BmobThirdUserAuth authInfo = new BmobUser.BmobThirdUserAuth(platform.getName().toLowerCase(),db.getToken(), db.getExpiresIn()+"", db.getUserId());
+            loginWithAuth(authInfo);
+        }
+
+        @Override
+        public void onError(Platform platform, int i, Throwable throwable) {
+            mView.showTips("授权失败");
+        }
+
+        @Override
+        public void onCancel(Platform platform, int i) {
+            mView.showTips("取消授权");
+        }
+    };
+
+    public void loginWithAuth(final BmobUser.BmobThirdUserAuth authInfo){
+        //mView.showProgressDialog();
+        BmobUser.loginWithAuthData(authInfo, new LogInListener<JSONObject>() {
+            @Override
+            public void done(JSONObject jsonObject, BmobException e) {
+                //mView.dismissProgressDialog();
+                if(e==null) {
+                    BmobUser user = VRUser.getCurrentUser();
+                    if(user.getMobilePhoneNumber() == null || user.getMobilePhoneNumber().equals("")) {
+//                        Log.e("json", jsonObject.toString());
+//                        JSONObject json;
+//                        Bundle bundle = new Bundle();
+//                        if((json = jsonObject.optJSONObject(BmobUser.BmobThirdUserAuth.SNS_TYPE_QQ))!=null) {
+//                            bundle.putString("snsType", BmobUser.BmobThirdUserAuth.SNS_TYPE_QQ);
+//                        } else if((json = jsonObject.optJSONObject(BmobUser.BmobThirdUserAuth.SNS_TYPE_WEIXIN))!=null) {
+//                            bundle.putString("snsType", BmobUser.BmobThirdUserAuth.SNS_TYPE_WEIXIN);
+//                        } else if((json = jsonObject.optJSONObject(BmobUser.BmobThirdUserAuth.SNS_TYPE_WEIBO))!=null) {
+//                            bundle.putString("snsType", BmobUser.BmobThirdUserAuth.SNS_TYPE_WEIBO);
+//                        }
+//                        bundle.putString("accessToken", json.optString("access_token"));
+//                        bundle.putString("expiresIn", json.optLong("expires_in")+"");
+//                        bundle.putString("userId", json.optString("openid"));
+//                        ActivitySkipHelper.toRegisterActivity(mContext, bundle);
+                        ActivitySkipHelper.toRegisterActivity(mContext);
+                    } else {
+                        loginState();
+                        mView.finish();
+                    }
+                } else {
+                    Log.e("error", e.getMessage());
+                }
+            }
+
+        });
+    }
+
 }

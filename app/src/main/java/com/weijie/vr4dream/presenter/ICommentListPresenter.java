@@ -11,7 +11,7 @@ public interface ICommentListPresenter extends IBasePresenter {
      * 跳转到添加评论
      * @param id
      */
-    void clickComment(String id);
+    void clickComment(String id, int tag);
 
     /**
      * 加载数据

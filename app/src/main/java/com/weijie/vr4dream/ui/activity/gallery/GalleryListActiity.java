@@ -66,7 +66,7 @@ public class GalleryListActiity extends BaseListActivity<GalleryActivityPresente
     private OnListItemClickListener itemClickListener = new OnListItemClickListener() {
         @Override
         public void onItemClickListener(View itemView, Object obj) {
-            ActivitySkipHelper.toGalleryDetailActivity(mContext, null);
+            ActivitySkipHelper.toGalleryDetailActivity(mContext, (Gallery)obj);
         }
     };
 

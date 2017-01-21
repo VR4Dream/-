@@ -2,8 +2,6 @@ package com.weijie.vr4dream.ui.view.user;
 
 import com.weijie.vr4dream.ui.view.IBaseView;
 
-import cn.bmob.v3.BmobUser;
-
 /**
  * 登录
  * 作者：guoweijie on 16/12/16 13:59

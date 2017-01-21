@@ -2,6 +2,7 @@ package com.weijie.vr4dream.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.weijie.vr4dream.model.BuildingEstate;
 import com.weijie.vr4dream.model.Gallery;
@@ -15,6 +16,7 @@ import com.weijie.vr4dream.ui.activity.gallery.GalleryListActiity;
 import com.weijie.vr4dream.ui.activity.idea.IdeaDetailActivity;
 import com.weijie.vr4dream.ui.activity.user.InfoActivity;
 import com.weijie.vr4dream.ui.activity.user.LoginActivity;
+import com.weijie.vr4dream.ui.activity.user.RegisterActivity;
 import com.weijie.vr4dream.ui.activity.user.SettingActivity;
 import com.weijie.vr4dream.ui.activity.user.SuggestActivity;
 
@@ -42,6 +44,23 @@ public class ActivitySkipHelper {
      */
     public static void toLoginActivity(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到第三方注册绑定页面
+     *
+     * @param context 上下文
+     * @param bundle
+     */
+    public static void toRegisterActivity(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, RegisterActivity.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    public static void toRegisterActivity(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
     }
 
@@ -102,9 +121,10 @@ public class ActivitySkipHelper {
      * @param context
      * @param id 文章id
      */
-    public static void toCommentActivity(Context context, String id) {
+    public static void toCommentActivity(Context context, String id, int tag) {
         Intent intent = new Intent(context, CommentActivity.class);
         intent.putExtra("id", id);
+        intent.putExtra("tag", tag);
         context.startActivity(intent);
     }
 
@@ -113,9 +133,10 @@ public class ActivitySkipHelper {
      * @param context
      * @param id 文章id
      */
-    public static void toCommentListActivity(Context context, String id) {
+    public static void toCommentListActivity(Context context, String id, int tag) {
         Intent intent = new Intent(context, CommentListActivity.class);
         intent.putExtra("id", id);
+        intent.putExtra("tag", tag);
         context.startActivity(intent);
     }
 

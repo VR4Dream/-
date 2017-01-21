@@ -1,6 +1,7 @@
 package com.weijie.vr4dream.ui.view;
 
 import com.weijie.vr4dream.adapter.LoadTipAdapter;
+import com.weijie.vr4dream.model.Comment;
 import com.weijie.vr4dream.model.IdeaComment;
 
 import java.util.List;
@@ -15,12 +16,12 @@ public interface ICommentListView extends IBaseView {
     /**
      * 刷新
      */
-    void refreshView(List<IdeaComment> comments);
+    void refreshView(List<Comment> comments);
 
     /**
      * 加载
      */
-    void loadMoreView(List<IdeaComment> comments);
+    void loadMoreView(List<Comment> comments);
 
     /**
      * 设置加载状态 true正在加载

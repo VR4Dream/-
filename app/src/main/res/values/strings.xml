@@ -25,10 +25,12 @@
     <string name="text_third_login">第三方账号登录</string>
     <string name="text_register">没有账号 立即注册</string>
     <string name="text_register_bt">注册</string>
+    <string name="text_bind">绑定</string>
     <string name="text_sure">确认</string>
     <string name="text_forget">忘记密码？</string>
     <string name="text_qq">QQ</string>
     <string name="text_taobao">淘宝</string>
+    <string name="text_sina">新浪微博</string>
     <string name="text_weixin">微信</string>
     <string name="text_prompt">提示</string>
     <string name="text_ensure">确定</string>

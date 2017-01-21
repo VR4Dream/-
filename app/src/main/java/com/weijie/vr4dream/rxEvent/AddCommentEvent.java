@@ -1,6 +1,6 @@
 package com.weijie.vr4dream.rxEvent;
 
-import com.weijie.vr4dream.model.IdeaComment;
+import com.weijie.vr4dream.model.Comment;
 
 /**
  * 添加评论事件
@@ -9,17 +9,17 @@ import com.weijie.vr4dream.model.IdeaComment;
  */
 public class AddCommentEvent {
 
-    IdeaComment comment;
+    Comment comment;
 
-    public AddCommentEvent(IdeaComment comment) {
+    public AddCommentEvent(Comment comment) {
         this.comment = comment;
     }
 
-    public IdeaComment getComment() {
+    public Comment getComment() {
         return comment;
     }
 
-    public void setComment(IdeaComment comment) {
+    public void setComment(Comment comment) {
         this.comment = comment;
     }
 }

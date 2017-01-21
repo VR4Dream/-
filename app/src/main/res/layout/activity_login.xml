@@ -148,10 +148,10 @@
                 android:gravity="center"
                 android:drawablePadding="3dp"
                 android:clickable="true"
-                android:drawableTop="@mipmap/login_tao"
+                android:drawableTop="@mipmap/login_sina"
                 android:textSize="@dimen/txt_tips"
                 android:textColor="@color/tipsColor"
-                android:text="@string/text_taobao"
+                android:text="@string/text_sina"
                 />
 
         </LinearLayout>

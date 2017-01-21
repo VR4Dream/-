@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.weijie.vr4dream.R;
+import com.weijie.vr4dream.model.Comment;
 import com.weijie.vr4dream.model.IdeaComment;
 import com.weijie.vr4dream.ui.widget.CircleImageView;
 import com.weijie.vr4dream.utils.StringUtil;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
 public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.ContentViewHolder> {
 
     private LayoutInflater mLayoutInflater;
-    private List<IdeaComment> mDataList;
+    private List<Comment> mDataList;
     private Context mContext;
 
     public CommentListAdapter(Context context) {
@@ -35,7 +36,7 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
         mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public void notifyDataSetChanged(List<IdeaComment> dataList) {
+    public void notifyDataSetChanged(List<Comment> dataList) {
         if(dataList==null) {
             mDataList = new ArrayList<>();
         } else
@@ -43,12 +44,12 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
         super.notifyDataSetChanged();
     }
 
-    public void loadMore(List<IdeaComment> dataList) {
+    public void loadMore(List<Comment> dataList) {
         this.mDataList.addAll(dataList);
         super.notifyDataSetChanged();
     }
 
-    public void addTop(IdeaComment comment) {
+    public void addTop(Comment comment) {
         if(mDataList==null) {
             mDataList = new ArrayList<>();
         }
@@ -64,7 +65,7 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
     @Override
     public void onBindViewHolder(ContentViewHolder holder, final int position) {
         if(!mDataList.isEmpty()) {
-            final IdeaComment data = mDataList.get(position);
+            final Comment data = mDataList.get(position);
             String sName = data.getAuthor().getUsername();
             if(StringUtil.validateMobile(sName)) {
                 sName = sName.replaceAll("(\\d{3})\\d{4}(\\d{4})","$1****$2");

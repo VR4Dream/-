@@ -1,5 +1,6 @@
 package com.weijie.vr4dream.model;
 
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -38,4 +39,6 @@ public class GalleryComment extends BmobObject {
     public void setContent(String content) {
         this.content = content;
     }
+
+
 }

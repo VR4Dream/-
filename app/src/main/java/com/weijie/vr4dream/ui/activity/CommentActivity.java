@@ -1,11 +1,14 @@
 package com.weijie.vr4dream.ui.activity;
 
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 
 import com.weijie.vr4dream.R;
 import com.weijie.vr4dream.presenter.CommentPresenter;
+import com.weijie.vr4dream.presenter.gallery.GalleryCommentPresenter;
+import com.weijie.vr4dream.presenter.idea.IdeaCommentPresenter;
 import com.weijie.vr4dream.ui.view.ICommentView;
 import com.weijie.vr4dream.ui.widget.AlertDialogFragment;
 
@@ -22,9 +25,19 @@ public class CommentActivity extends BaseActivity<CommentPresenter> implements I
     @Bind(R.id.ev_comment)
     EditText evComment;
 
+    private String id;
+    private int tag;
+
     @Override
     protected void initPresenter() {
-        mPresenter = new CommentPresenter(mContext, this);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        tag = intent.getIntExtra("tag", 1);
+        if(tag == 0) {
+            mPresenter = new GalleryCommentPresenter(mContext, this);
+        } else {
+            mPresenter = new IdeaCommentPresenter(mContext, this);
+        }
     }
 
     @Override
@@ -58,7 +71,6 @@ public class CommentActivity extends BaseActivity<CommentPresenter> implements I
                 finish();
                 break;
             case R.id.btn_right:
-                String id = getIntent().getStringExtra("id");
                 mPresenter.submitComment(id, evComment.getText().toString());
                 break;
         }

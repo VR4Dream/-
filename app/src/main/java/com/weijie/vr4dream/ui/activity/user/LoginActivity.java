@@ -3,8 +3,10 @@ package com.weijie.vr4dream.ui.activity.user;
 
 import android.view.View;
 
+import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
 import com.weijie.vr4dream.presenter.user.LoginPresenter;
+import com.weijie.vr4dream.rxEvent.BindThirdEvent;
 import com.weijie.vr4dream.ui.activity.BaseActivity;
 import com.weijie.vr4dream.ui.view.user.ILoginView;
 import com.weijie.vr4dream.ui.widget.IconEditText;
@@ -13,6 +15,7 @@ import com.weijie.vr4dream.ui.widget.IdentifyView;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import rx.functions.Action1;
 
 /**
  * 用户登录
@@ -52,6 +55,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     protected void initialize() {
+        subscribeEvent();
         setOnClickListener();
     }
 
@@ -80,7 +84,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     }
 
-    @OnClick({R.id.tv_login, R.id.tv_forget, R.id.tv_register, R.id.tv_forget_login, R.id.bt_register, R.id.bt_login, R.id.login_qq})
+    @OnClick({R.id.tv_login, R.id.tv_forget, R.id.tv_register, R.id.tv_forget_login, R.id.bt_register, R.id.bt_login, R.id.login_qq, R.id.login_wx, R.id.login_sina})
     void clickMsg(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
@@ -106,6 +110,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                 mPresenter.login(editUsername.getText().toString(), editPassword.getText().toString());
                 break;
             case R.id.login_qq:
+                mPresenter.loginByQQ();
+                break;
+            case R.id.login_wx:
+                mPresenter.loginByWeiXin();
+                break;
+            case R.id.login_sina:
+                mPresenter.loginBySina();
                 break;
             default:
                 break;
@@ -129,4 +140,33 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         identifyView.getVerifyCodeSuccess();
     }
 
+    /**
+     * 事件订阅
+     */
+    private void subscribeEvent() {
+        App.getInstance()
+                .getRxBus()
+                .subscribeNormalEvent(this, new Action1<Object>() {
+                    @Override
+                    public void call(Object o) {
+                        if (o instanceof BindThirdEvent) {
+                            boolean isBind = ((BindThirdEvent) o).isBind();
+                            if(!isBind) {
+                                mPresenter.logoutState();
+                            } else {
+                                mPresenter.loginState();
+                                finish();
+                            }
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onDestroy() {
+        App.getInstance()
+                .getRxBus()
+                .unSubscribe(this);
+        super.onDestroy();
+    }
 }

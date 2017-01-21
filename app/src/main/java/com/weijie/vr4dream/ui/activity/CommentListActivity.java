@@ -1,5 +1,6 @@
 package com.weijie.vr4dream.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,8 +9,10 @@ import com.weijie.vr4dream.App;
 import com.weijie.vr4dream.R;
 import com.weijie.vr4dream.adapter.CommentListAdapter;
 import com.weijie.vr4dream.adapter.LoadTipAdapter;
-import com.weijie.vr4dream.model.IdeaComment;
+import com.weijie.vr4dream.model.Comment;
 import com.weijie.vr4dream.presenter.CommentListPresenter;
+import com.weijie.vr4dream.presenter.gallery.GalleryCommentListPresenter;
+import com.weijie.vr4dream.presenter.idea.IdeaCommentListPresenter;
 import com.weijie.vr4dream.rxEvent.AddCommentEvent;
 import com.weijie.vr4dream.ui.view.ICommentListView;
 
@@ -28,10 +31,18 @@ public class CommentListActivity extends BaseListActivity<CommentListPresenter> 
     private CommentListAdapter mAdapter;
     private LoadTipAdapter tipAdapter;
     private String id;
+    private int tag;
 
     @Override
     protected void initPresenter() {
-        mPresenter = new CommentListPresenter(mContext, this);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        tag = intent.getIntExtra("tag", 1);
+        if(tag == 0) {
+            mPresenter = new GalleryCommentListPresenter(mContext, this);
+        } else {
+            mPresenter = new IdeaCommentListPresenter(mContext, this);
+        }
     }
 
     @Override
@@ -42,7 +53,6 @@ public class CommentListActivity extends BaseListActivity<CommentListPresenter> 
     @Override
     protected void initialize() {
         super.initialize();
-        id = getIntent().getStringExtra("id");
         initRecyclerView();
         subscribeEvent();
         refresh();
@@ -85,13 +95,13 @@ public class CommentListActivity extends BaseListActivity<CommentListPresenter> 
     }
 
     @Override
-    public void refreshView(List<IdeaComment> comments) {
+    public void refreshView(List<Comment> comments) {
         mAdapter.notifyDataSetChanged(comments);
         mPtrFrameLayout.refreshComplete();
     }
 
     @Override
-    public void loadMoreView(List<IdeaComment> comments) {
+    public void loadMoreView(List<Comment> comments) {
         mAdapter.loadMore(comments);
         mPtrFrameLayout.refreshComplete();
     }
@@ -134,7 +144,7 @@ public class CommentListActivity extends BaseListActivity<CommentListPresenter> 
                 finish();
                 break;
             case R.id.btn_right:
-                mPresenter.clickComment(id);
+                mPresenter.clickComment(id, tag);
                 break;
         }
     }

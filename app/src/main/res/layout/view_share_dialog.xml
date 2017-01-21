@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="40dp"
+    android:orientation="vertical"
+    android:background="#fff"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:textColor="@color/txtColor"
+        android:textSize="@dimen/txt_button"
+        android:text="分享到"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.weijie.vr4dream.ui.widget.IconTextView
+            android:id="@+id/btn_qq"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            vr:input_left="@mipmap/third_qq"
+            vr:input_txt="QQ好友">
+        </com.weijie.vr4dream.ui.widget.IconTextView>
+        <com.weijie.vr4dream.ui.widget.IconTextView
+            android:id="@+id/btn_space"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            vr:input_left="@mipmap/third_qq_space"
+            vr:input_txt="QQ空间">
+        </com.weijie.vr4dream.ui.widget.IconTextView>
+        <com.weijie.vr4dream.ui.widget.IconTextView
+            android:id="@+id/btn_wechat"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            vr:input_left="@mipmap/third_wechat"
+            vr:input_txt="微信好友">
+        </com.weijie.vr4dream.ui.widget.IconTextView>
+        <com.weijie.vr4dream.ui.widget.IconTextView
+            android:id="@+id/btn_circle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            vr:input_left="@mipmap/third_friend_circle"
+            vr:input_txt="朋友圈">
+        </com.weijie.vr4dream.ui.widget.IconTextView>
+        <com.weijie.vr4dream.ui.widget.IconTextView
+            android:id="@+id/btn_blog"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            vr:input_left="@mipmap/third_blog"
+            vr:input_txt="新浪微博">
+        </com.weijie.vr4dream.ui.widget.IconTextView>
+
+    </LinearLayout>
+
+</LinearLayout>
