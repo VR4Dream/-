@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">家装百科</string>
+    <string name="app_name">3D家装</string>
 
     <string name="tips_net_err">网络出现异常，请检查一下</string>
     <string name="text_retry">重新加载</string>

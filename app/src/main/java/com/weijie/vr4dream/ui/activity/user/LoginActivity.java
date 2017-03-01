@@ -113,10 +113,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                 mPresenter.loginByQQ();
                 break;
             case R.id.login_wx:
-                mPresenter.loginByWeiXin();
+                //mPresenter.loginByWeiXin();
+                showTips("很抱歉，现阶段仅允许QQ或者新浪微博登录");
                 break;
             case R.id.login_sina:
                 mPresenter.loginBySina();
+                //showTips("很抱歉，现阶段仅允许QQ登录");
                 break;
             default:
                 break;

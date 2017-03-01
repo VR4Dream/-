@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.weijie.vr4dream">
+    package="com.weijie.vr4dream"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -31,7 +32,8 @@
             android:name="com.weijie.vr4dream.config.GlideConfiguration"
             android:value="GlideModule" />
 
-        <activity android:name=".ui.activity.launcher.LauncherActivity"
+        <activity android:name=".ui.activity.MainActivity"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,9 +41,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <!--<activity android:name=".ui.activity.launcher.LauncherActivity"-->
+            <!-->-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".ui.activity.MainActivity"-->
+            <!--android:screenOrientation="portrait">-->
+        <!--</activity>-->
         <activity android:name=".ui.activity.user.LoginActivity"
             android:screenOrientation="portrait">
         </activity>
@@ -76,6 +86,15 @@
         <activity android:name=".ui.activity.CommentListActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ui.activity.favourite.IdeaFavouriteActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ui.activity.favourite.GalleryFavouriteActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ui.activity.GuideActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -92,7 +111,7 @@
             </intent-filter>
 
             <intent-filter>
-                <data android:scheme="tencent100371282" />
+                <data android:scheme="tencent1105872165" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />

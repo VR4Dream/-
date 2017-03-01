@@ -96,7 +96,11 @@ public class Gallery extends Idea {
     }
 
     public String getTitleText() {
-        return buildingEstate.getName()+getBuildTypeText()+getStyleText();
+        String buildName = buildingEstate.getName();
+        if( buildName == null )
+            return getBuildTypeText()+getStyleText();
+        else
+            return buildingEstate.getName()+getBuildTypeText()+getStyleText();
     }
 
     private String getBuildTypeText() {

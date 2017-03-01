@@ -73,12 +73,13 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
             holder.tvName.setText(sName);
             holder.tvDate.setText(data.getCreatedAt());
             holder.tvContent.setText(data.getContent());
-            Glide.with(mContext)
-                    .load(data.getAuthor().getIcon().getUrl())
-                    .crossFade()
-                    .placeholder(R.mipmap.user_pic)
-                    .error(R.mipmap.user_pic)
-                    .into(holder.ivIcon);
+//            Glide.with(mContext)
+//                    .load(data.getAuthor().getIcon().getUrl())
+//                    .load("http://bmob-cdn-8496.b0.upaiyun.com/2016/12/30/7ec4915040a639f1804c6ce0b54b832b.jpeg")
+//                    .crossFade()
+//                    .placeholder(R.mipmap.user_pic)
+//                    .error(R.mipmap.user_pic)
+//                    .into(holder.ivIcon);
         }
 
     }

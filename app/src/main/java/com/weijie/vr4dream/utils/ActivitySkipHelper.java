@@ -10,7 +10,10 @@ import com.weijie.vr4dream.model.Idea;
 import com.weijie.vr4dream.ui.activity.BuildingEstateActivity;
 import com.weijie.vr4dream.ui.activity.CommentActivity;
 import com.weijie.vr4dream.ui.activity.CommentListActivity;
+import com.weijie.vr4dream.ui.activity.GuideActivity;
 import com.weijie.vr4dream.ui.activity.MainActivity;
+import com.weijie.vr4dream.ui.activity.favourite.GalleryFavouriteActivity;
+import com.weijie.vr4dream.ui.activity.favourite.IdeaFavouriteActivity;
 import com.weijie.vr4dream.ui.activity.gallery.GalleryDetailActivity;
 import com.weijie.vr4dream.ui.activity.gallery.GalleryListActiity;
 import com.weijie.vr4dream.ui.activity.idea.IdeaDetailActivity;
@@ -157,6 +160,29 @@ public class ActivitySkipHelper {
     public static void toGalleryListActivity(Context context, BuildingEstate estate) {
         Intent intent = new Intent(context, GalleryListActiity.class);
         intent.putExtra("data", estate);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到灵感收藏页面
+     * @param context
+     */
+    public static void toIdeaListActivity(Context context) {
+        Intent intent = new Intent(context, IdeaFavouriteActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到3D收藏页面
+     * @param context
+     */
+    public static void toGalleryListActivity(Context context) {
+        Intent intent = new Intent(context, GalleryFavouriteActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void toGuideActivity(Context context) {
+        Intent intent = new Intent(context, GuideActivity.class);
         context.startActivity(intent);
     }
 

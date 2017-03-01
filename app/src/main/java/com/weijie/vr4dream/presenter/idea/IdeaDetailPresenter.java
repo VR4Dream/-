@@ -37,6 +37,8 @@ import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.tencent.qzone.QZone;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
+import cn.sharesdk.wechat.utils.WXMediaMessage;
+import cn.sharesdk.wechat.utils.WXTextObject;
 
 /**
  * 文章详情
@@ -309,22 +311,23 @@ public class IdeaDetailPresenter extends BaseActivityPresenter<IIdeaDetailView> 
     public void shareWeChat() {
         Wechat.ShareParams sp = new Wechat.ShareParams();
         sp.setTitle(idea.getTitle());
-        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setUrl(idea.getLink());
         sp.setImageUrl(idea.getCover());
-        sp.setSiteUrl("http://www.h7sc.com");
+        sp.setShareType(Platform.SHARE_WEBPAGE);
         Platform wechat = ShareSDK.getPlatform (Wechat.NAME);
         wechat.setPlatformActionListener(listener); // 设置分享事件回调
         // 执行图文分享
         wechat.share(sp);
     }
+    //023d83c38cc8c846d31f730d3202897e
 
     @Override
     public void shareWechatMoments() {
         WechatMoments.ShareParams sp = new WechatMoments.ShareParams();
         sp.setTitle(idea.getTitle());
-        sp.setTitleUrl(idea.getLink()); // 标题的超链接
+        sp.setUrl(idea.getLink());
         sp.setImageUrl(idea.getCover());
-        sp.setSiteUrl("http://www.h7sc.com");
+        sp.setShareType(Platform.SHARE_WEBPAGE);
         Platform wechatMoments = ShareSDK.getPlatform (WechatMoments.NAME);
         wechatMoments.setPlatformActionListener(listener); // 设置分享事件回调
         // 执行图文分享

@@ -289,13 +289,13 @@ public class IdeaDetailActivity extends BaseActivity<IdeaDetailPresenter> implem
         name.setText(sName);
         date.setText(comment.getCreatedAt());
         content.setText(comment.getContent());
-        Glide.with(mContext)
-                .load(comment.getAuthor().getIcon().getUrl())
-                        //.load("http://bmob-cdn-8496.b0.upaiyun.com/2016/12/30/7ec4915040a639f1804c6ce0b54b832b.jpeg")
-                .crossFade()
-                .placeholder(R.mipmap.user_pic)
-                .error(R.mipmap.user_pic)
-                .into(icon);
+//        Glide.with(mContext)
+//                .load(comment.getAuthor().getIcon().getUrl())
+//                .load("http://bmob-cdn-8496.b0.upaiyun.com/2016/12/30/7ec4915040a639f1804c6ce0b54b832b.jpeg")
+//                .crossFade()
+//                .placeholder(R.mipmap.user_pic)
+//                .error(R.mipmap.user_pic)
+//                .into(icon);
     }
 
     /**

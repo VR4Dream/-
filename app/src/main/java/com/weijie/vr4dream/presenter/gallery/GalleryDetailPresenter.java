@@ -246,9 +246,9 @@ public class GalleryDetailPresenter extends BaseActivityPresenter<IGalleryDetail
     public void shareWeChat() {
         Wechat.ShareParams sp = new Wechat.ShareParams();
         sp.setTitle(gallery.getTitle());
-        sp.setTitleUrl(gallery.getLink()); // 标题的超链接
+        sp.setUrl(gallery.getLink());
         sp.setImageUrl(gallery.getCover());
-        sp.setSiteUrl("http://www.h7sc.com");
+        sp.setShareType(Platform.SHARE_WEBPAGE);
         Platform wechat = ShareSDK.getPlatform (Wechat.NAME);
         wechat.setPlatformActionListener(listener); // 设置分享事件回调
         // 执行图文分享
@@ -259,9 +259,9 @@ public class GalleryDetailPresenter extends BaseActivityPresenter<IGalleryDetail
     public void shareWechatMoments() {
         WechatMoments.ShareParams sp = new WechatMoments.ShareParams();
         sp.setTitle(gallery.getTitle());
-        sp.setTitleUrl(gallery.getLink()); // 标题的超链接
+        sp.setUrl(gallery.getLink());
         sp.setImageUrl(gallery.getCover());
-        sp.setSiteUrl("http://www.h7sc.com");
+        sp.setShareType(Platform.SHARE_WEBPAGE);
         Platform wechatMoments = ShareSDK.getPlatform (WechatMoments.NAME);
         wechatMoments.setPlatformActionListener(listener); // 设置分享事件回调
         // 执行图文分享

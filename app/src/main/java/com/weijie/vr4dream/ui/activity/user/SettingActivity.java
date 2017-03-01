@@ -55,6 +55,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements I
                 mPresenter.clickVersionUpdate();
                 break;
             case R.id.lv_about:
+                showTips("作者：Json");
                 //关于我们
                 break;
         }
@@ -90,7 +91,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements I
     @Override
     public void showAppUpdateDialog(String content, boolean negativeButtonVisible) {
         AlertDialogFragment
-                .getInstance(content, negativeButtonVisible)
+                .getInstance(content, "取消", "更新", negativeButtonVisible)
                 .setOnDialogClickListener(new AlertDialogFragment.OnDialogClickListener() {
                     @Override
                     public void onPositiveButtonClickListener() {

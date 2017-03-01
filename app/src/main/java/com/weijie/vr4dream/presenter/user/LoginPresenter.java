@@ -164,13 +164,19 @@ public class LoginPresenter extends BaseActivityPresenter<ILoginView> implements
         plat.SSOSetting(false);
         plat.setPlatformActionListener(listener);
         plat.showUser(null);
+//        plat.authorize();
     }
 
     private PlatformActionListener listener = new PlatformActionListener() {
         @Override
         public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
             PlatformDb db = platform.getDb();
-            BmobUser.BmobThirdUserAuth authInfo = new BmobUser.BmobThirdUserAuth(platform.getName().toLowerCase(),db.getToken(), db.getExpiresIn()+"", db.getUserId());
+            BmobUser.BmobThirdUserAuth authInfo = null;
+            if(platform.getName().equals("QQ")) {
+                authInfo = new BmobUser.BmobThirdUserAuth("qq",db.getToken(), db.getExpiresIn()+"", db.getUserId());
+            } else if(platform.getName().equals("SinaWeibo")) {
+                authInfo = new BmobUser.BmobThirdUserAuth("weibo",db.getToken(), db.getExpiresIn()+"", db.getUserId());
+            }
             loginWithAuth(authInfo);
         }
 

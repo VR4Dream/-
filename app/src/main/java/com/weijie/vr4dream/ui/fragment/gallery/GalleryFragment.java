@@ -1,5 +1,6 @@
 package com.weijie.vr4dream.ui.fragment.gallery;
 
+import android.app.Activity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.weijie.vr4dream.ui.widget.MultiRadioGroup;
 import com.weijie.vr4dream.ui.widget.RecyclerViewDivider;
 import com.weijie.vr4dream.ui.widget.VRSlidingMenu;
 import com.weijie.vr4dream.utils.ActivitySkipHelper;
+import com.weijie.vr4dream.utils.GuideUtil;
 
 import java.util.List;
 
@@ -37,6 +39,8 @@ import rx.functions.Action1;
  * 邮箱：529844698@qq.com
  */
 public class GalleryFragment extends BaseListFragment<GalleryPresenter> implements IGalleryView {
+
+    private GuideUtil guideUtil = null;
 
     @Bind(R.id.vr_slidingmenu)
     VRSlidingMenu vrSlidingMenu;
@@ -206,6 +210,7 @@ public class GalleryFragment extends BaseListFragment<GalleryPresenter> implemen
                 vrSlidingMenu.toggle();
                 break;
             case R.id.iv_question:
+                ActivitySkipHelper.toGuideActivity(mContext);
                 break;
         }
     }

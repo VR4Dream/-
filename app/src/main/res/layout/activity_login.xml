@@ -8,11 +8,19 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="280dp"
         android:layout_height="200dp"
-        android:src="@mipmap/ic_luch"
-        />
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            />
+    </LinearLayout>
+
+
 
     <LinearLayout
         android:id="@+id/lv_login"

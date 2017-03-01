@@ -34,4 +34,9 @@ public interface IMineView extends IBaseView {
      */
     void setGalleryNum(int num);
 
+    /**
+     * 分享app
+     */
+    void showShareDialog();
+
 }

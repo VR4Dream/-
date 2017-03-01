@@ -1,10 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        vr4dream {
+            keyAlias '3D家装'
+            keyPassword '2016jiayou'
+            storeFile file('/Users/guoweijie/Downloads/AndroidForMac/workspace/私人作品签名文件/json-keystore.jks')
+            storePassword '2016jiayou'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     useLibrary 'org.apache.http.legacy'
-
     defaultConfig {
         applicationId "com.weijie.vr4dream"
         minSdkVersion 17
@@ -16,6 +23,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.vr4dream
+        }
+        debug {
+            signingConfig signingConfigs.vr4dream
         }
     }
 }
@@ -26,19 +37,14 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.android.support:cardview-v7:23.2.1'
-
     //下拉刷新上拉加载
     compile 'in.srain.cube:ptr-load-more:1.0.6'
-
     //Bind
     compile 'com.jakewharton:butterknife:7.0.1'
-
     //图片加载缓存
     compile 'com.github.bumptech.glide:glide:3.6.1'
-
     //bmob
     compile 'cn.bmob.android:bmob-sdk:3.5.3'
-
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
     compile 'cn.bmob.android:http-legacy:1.0'
 }

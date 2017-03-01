@@ -18,6 +18,12 @@
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 
+    <!-- activity switch animation -->
+    <style name="view_anim">
+        <item name="@android:windowEnterAnimation">@anim/alpha_enter</item>
+        <item name="@android:windowExitAnimation">@anim/alpha_exit</item>
+    </style>
+
     <!-- base dialog -->
     <style name="BaseDialog" parent="@android:style/Theme.Dialog">
         <item name="android:textSize">@dimen/txt_content</item>
@@ -184,6 +190,12 @@
     <style name="dialog_animation_down" parent="android:Animation">
         <item name="@android:windowEnterAnimation">@anim/slide_in_bottom</item>
         <item name="@android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <!--控制dialog进出动画-->
+    <style name="dialog_animation_center" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/alpha_enter</item>
+        <item name="@android:windowExitAnimation">@anim/alpha_exit</item>
     </style>
 
 

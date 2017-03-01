@@ -55,4 +55,29 @@ public interface IMinePresenter extends IBasePresenter {
      */
     void loginStateChange(LoginStateChangeEvent event);
 
+    /**
+     * 分享到新浪微博
+     */
+    void shareBlog();
+
+    /**
+     * 分享到QQ空间
+     */
+    void shareSpace();
+
+    /**
+     * 分享到微信好友
+     */
+    void shareWeChat();
+
+    /**
+     * 分享到朋友圈
+     */
+    void shareWechatMoments();
+
+    /**
+     * 分享到QQ
+     */
+    void shareQQ();
+
 }
